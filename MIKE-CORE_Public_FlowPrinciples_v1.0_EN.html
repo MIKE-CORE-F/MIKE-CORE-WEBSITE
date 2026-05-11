@@ -2,174 +2,248 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MIKE-CORE • Flow Principles v1.0 (EN)</title>
+  <title>MIKE-CORE – Public Flow Principles v1.0</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Public principles of ecosystemic flows within the MIKE-CORE IT ecosystem." />
+  <meta name="author" content="MIKE Verhelst" />
+
   <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
     body {
-      background: #050814;
-      color: #e5ecf7;
-      font-family: system-ui, sans-serif;
-      padding: 40px;
-      line-height: 1.7;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    h1, h2, h3 {
-      color: #3aa9ff;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    h1 {
-      margin-bottom: 10px;
-    }
-    h2 {
-      margin-top: 32px;
-      margin-bottom: 8px;
-    }
-    h3 {
-      margin-top: 20px;
-      margin-bottom: 6px;
-    }
-    p {
-      margin-bottom: 10px;
-    }
-    .tagline {
-      color: #9ccaff;
-      font-size: 14px;
-      margin-bottom: 24px;
-    }
-    .section {
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #1b2438;
-    }
-    ul {
-      margin: 8px 0 8px 20px;
+      margin: 0;
       padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
     }
-    li {
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+                  rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+    }
+
+    header.hero {
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 28px;
+      margin: 14px 0 4px;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-soft);
+      max-width: 640px;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 15px;
+      color: var(--accent-blue);
+      margin: 14px 0 6px;
+    }
+
+    p, ul {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    ul { margin-left: 18px; }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .flow-card {
+      background: rgba(11, 16, 32, 0.96);
+      border-radius: 12px;
+      border: 1px solid rgba(27, 34, 53, 0.9);
+      padding: 14px 14px 16px;
+    }
+
+    .flow-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-blue-soft);
+      margin-bottom: 4px;
+    }
+
+    .flow-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-silver);
       margin-bottom: 6px;
     }
-    .meta {
-      font-size: 12px;
-      color: #7f8aa5;
-      margin-top: 32px;
-      border-top: 1px solid #1b2438;
-      padding-top: 12px;
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
     }
   </style>
 </head>
+
 <body>
+  <div class="page-wrap">
+    <div class="glass-panel">
 
-<h1>MIKE-CORE • Flow Principles</h1>
-<div class="tagline">Public Edition • v1.0 • English</div>
+      <header class="hero">
+        <div class="hero-kicker">MIKE‑CORE ECOSYSTEM • PUBLIC EDITION</div>
+        <h1 class="hero-title">Public Flow Principles</h1>
+        <p class="hero-subtitle">
+          A public introduction to ecosystemic flows within MIKE‑CORE.  
+          This page presents the upper layer of flow architecture without exposing internal chains, validation paths or blueprint structures.
+        </p>
+      </header>
 
-<div class="section">
-  <h2>1. Purpose of the Flow Principles</h2>
-  <p>
-    The Flow Principles describe how work, information, and responsibility move through the MIKE-CORE ecosystem
-    without creating chaos, overload, or hidden risk. They are written as a public reference so that anyone who
-    touches the ecosystem understands the rules of movement: what may flow, what must not flow, and what must
-    always be traceable.
-  </p>
-  <p>
-    These principles are not “nice to have” guidelines; they are structural constraints. If a workflow breaks
-    these principles, the ecosystem will eventually pay the price in instability, stress, or loss of trust.
-  </p>
-</div>
+      <section class="section">
+        <div class="section-title">What are ecosystemic flows?</div>
+        <p>
+          Ecosystemic flows describe <strong>how information, decisions and movement</strong> travel through the MIKE‑CORE ecosystem.
+          They are not linear, not team‑dependent, and not bound to frameworks.
+        </p>
+        <p>
+          An ecosystemic flow:
+        </p>
+        <ul>
+          <li>moves through the landscape without breaking dependencies</li>
+          <li>detects drift naturally</li>
+          <li>keeps coherence intact</li>
+          <li>is reproducible in any context</li>
+          <li>is not sensitive to framework failures</li>
+        </ul>
+      </section>
 
-<div class="section">
-  <h2>2. Core Flow Principles</h2>
+      <section class="section">
+        <div class="section-title">Public flow categories</div>
+        <p>
+          Internal flow chains remain closed.  
+          Below is only the public upper layer of flow categories.
+        </p>
 
-  <h3>2.1 Single Source of Truth</h3>
-  <p>
-    Every critical element (document, module, decision, configuration) has exactly one authoritative home in the
-    ecosystem. Copies may exist for convenience, but they never become the new source of truth.
-  </p>
-  <ul>
-    <li>All public MIKE-CORE pages are anchored in one official repository.</li>
-    <li>Updates happen at the source, never in ad‑hoc duplicates.</li>
-  </ul>
+        <div class="flow-grid">
 
-  <h3>2.2 Traceable Movement</h3>
-  <p>
-    Anything that moves—files, decisions, responsibilities—must be traceable: where it came from, where it went,
-    and why. Flow without traceability is treated as a risk, not as progress.
-  </p>
-  <ul>
-    <li>Every public change can be reconstructed from commits and version history.</li>
-    <li>No “mystery edits” and no undocumented shortcuts.</li>
-  </ul>
+          <div class="flow-card">
+            <div class="flow-label">F‑01</div>
+            <div class="flow-title">Information Flows</div>
+            <p>
+              Describe how information moves through the ecosystem without disturbing dependencies.
+            </p>
+          </div>
 
-  <h3>2.3 No Hidden Load</h3>
-  <p>
-    Flow must never silently increase pressure on people or systems. If a new stream of work is created, the
-    load, ownership, and boundaries must be explicit.
-  </p>
-  <ul>
-    <li>New responsibilities are always linked to a clear owner and scope.</li>
-    <li>“Someone will pick this up” is not an acceptable flow pattern.</li>
-  </ul>
+          <div class="flow-card">
+            <div class="flow-label">F‑02</div>
+            <div class="flow-title">Decision Flows</div>
+            <p>
+              Show how ecosystemic decisions are made without rhythm or team pressure.
+            </p>
+          </div>
 
-  <h3>2.4 Reversible by Design</h3>
-  <p>
-    Any structural change to the ecosystem must be reversible without drama. Flow that cannot be reversed becomes
-    a trap, not a pathway.
-  </p>
-  <ul>
-    <li>Directory changes, publishing routes, and naming conventions are designed so they can be rolled back.</li>
-    <li>Emergency rollback is always possible without destroying knowledge.</li>
-  </ul>
+          <div class="flow-card">
+            <div class="flow-label">F‑03</div>
+            <div class="flow-title">Stability Flows</div>
+            <p>
+              Flows that detect drift and safeguard ecosystemic stability.
+            </p>
+          </div>
 
-  <h3>2.5 Public vs. Internal Boundaries</h3>
-  <p>
-    Flow to the public layer is always deliberate and filtered. Internal blueprints, validation chains, and
-    deep‑structure logic never “accidentally” leak into public space.
-  </p>
-  <ul>
-    <li>Public pages expose principles, not raw internal wiring.</li>
-    <li>Anything that could destabilise the ecosystem if misused stays internal by default.</li>
-  </ul>
-</div>
+          <div class="flow-card">
+            <div class="flow-label">F‑04</div>
+            <div class="flow-title">Coherence Flows</div>
+            <p>
+              Flows that verify whether movements remain coherent with the ecosystemic direction.
+            </p>
+          </div>
 
-<div class="section">
-  <h2>3. Flow in the MIKE-CORE Public Pages</h2>
-  <p>
-    The public HTML pages (Ecosystem Guides, Domain Layers, Modules Overview, Flow Principles) are designed as
-    stable entry points. They are not playgrounds; they are curated doors into the ecosystem.
-  </p>
-  <ul>
-    <li><strong>Index page:</strong> routes visitors to the correct public documents without exposing internal structure.</li>
-    <li><strong>Each document:</strong> has a clear scope and does not duplicate other public content.</li>
-    <li><strong>Links:</strong> are stable, human‑readable, and aligned with the file naming conventions.</li>
-  </ul>
-</div>
+          <div class="flow-card">
+            <div class="flow-label">F‑05</div>
+            <div class="flow-title">Boundary & Identity Flows</div>
+            <p>
+              Flows that safeguard boundaries, roles and identity of ecosystemic components.
+            </p>
+          </div>
 
-<div class="section">
-  <h2>4. Human‑Safe Flow</h2>
-  <p>
-    Flow is always designed to be human‑safe: no technician, contributor, or reader should be forced into panic,
-    guesswork, or blame because of how the ecosystem is wired.
-  </p>
-  <ul>
-    <li>Documentation is written to reduce stress, not increase it.</li>
-    <li>Responsibilities are clear enough that people can say “yes” or “no” without fear.</li>
-  </ul>
-</div>
+        </div>
+      </section>
 
-<div class="section">
-  <h2>5. Versioning and Stability</h2>
-  <p>
-    This document is the public Flow Principles reference for MIKE-CORE, version 1.0. Future versions may extend
-    or refine these principles, but they will never break the core intent: stable, traceable, reversible, and
-    human‑safe flow across the ecosystem.
-  </p>
-</div>
+      <section class="section">
+        <div class="section-title">Public boundaries</div>
+        <p>
+          This page reveals only the public upper layer of ecosystemic flows.  
+          Internal flow chains, validation paths, TRIAD connections and blueprint structures remain closed to protect the integrity of MIKE‑CORE.
+        </p>
+      </section>
 
-<div class="meta">
-  MIKE-CORE • Flow Principles • Public Edition v1.0 (EN)<br />
-  Published via GitHub Pages: https://mike-core-f.github.io/MIKE-CORE-WEBSITE/
-</div>
+      <div class="footer-note">
+        © 2026 MIKE‑CORE — Public Ecosystem Layer • Flow Principles v1.0
+      </div>
 
+    </div>
+  </div>
 </body>
 </html>
