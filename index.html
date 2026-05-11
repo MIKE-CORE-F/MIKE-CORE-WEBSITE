@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE-CORE • Public Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      margin: 0;
+      background: #050814;
+      color: #e5ecf7;
+      font-family: system-ui, sans-serif;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 300px;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid rgba(58,169,255,0.25);
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      padding: 20px;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .logo {
+      width: 260px;
+      margin: 0 auto 20px auto;
+      display: block;
+      padding: 20px;
+      background: radial-gradient(circle, rgba(58,169,255,0.25) 0%, rgba(5,8,20,0) 70%);
+      border-radius: 20px;
+      filter: drop-shadow(0 0 18px rgba(58,169,255,1));
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: #9ccaff;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 8px rgba(58,169,255,0.6);
+    }
+
+    .nav-section-title {
+      font-size: 12px;
+      color: #7b8496;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-align: left;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      border-radius: 6px;
+      color: #9ccaff;
+      text-decoration: none;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .nav-link:hover {
+      background: rgba(58,169,255,0.15);
+      color: #3aa9ff;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+      max-width: 900px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(58,169,255,0.3);
+      background: rgba(255,255,255,0.05);
+      color: #e5ecf7;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 13px;
+      color: #7b8496;
+      text-transform: uppercase;
+      margin-top: 35px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .item {
+      margin-bottom: 10px;
+      background: rgba(255,255,255,0.03);
+      padding: 14px 18px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .item:hover {
+      background: rgba(58,169,255,0.08);
+      border: 1px solid rgba(58,169,255,0.3);
+      transform: translateX(4px);
+    }
+
+    a {
+      color: #9ccaff;
+      text-decoration: none;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lang {
+      font-size: 10px;
+      background: rgba(58,169,255,0.15);
+      color: #3aa9ff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .new {
+      font-size: 10px;
+      background: rgba(58,169,255,0.25);
+      color: #3aa9ff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+  </style>
+
+  <script>
+    function searchDocs() {
+      let input = document.getElementById("search").value.toLowerCase();
+      let items = document.getElementsByClassName("item");
+
+      for (let i = 0; i < items.length; i++) {
+        let text = items[i].innerText.toLowerCase();
+        items[i].style.display = text.includes(input) ? "" : "none";
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="sidebar">
+    <img class="logo" src="mikecore_logo.png" alt="MIKE-CORE Logo">
+    <div class="tagline">The Architect of a New IT Ecosystem</div>
+
+    <div class="nav-section-title">Navigation</div>
+    <a class="nav-link" href="#ecosystem">Ecosystem</a>
+    <a class="nav-link" href="#domain">Domains</a>
+    <a class="nav-link" href="#modules">Modules</a>
+    <a class="nav-link" href="#flow">Flow</a>
+    <a class="nav-link" href="#stability">Stability</a>
+    <a class="nav-link" href="#drift">Drift</a>
+    <a class="nav-link" href="#aiews">AIEWS</a>
+  </div>
+
+  <div class="content">
+
+    <div class="search-box">
+      <input id="search" type="text" placeholder="Search documents..." onkeyup="searchDocs()">
+    </div>
+
+    <!-- ECOSYSTEM -->
+    <h2 id="ecosystem">Ecosystem Guides</h2>
+    <div class="item"><a href="MIKE‑CORE_Public_Ecosystem_Guidev_1.0-DUTCH.html">Ecosystem Guide <span class="lang">NL</span></a></div>
+    <div class="item"><a href="MIKE‑CORE_Public_Ecosystem_Guidev_1.0-EN.html">Ecosystem Guide <span class="lang">EN</span></a></div>
+
+    <!-- DOMAIN LAYERS -->
+    <h2 id="domain">Domain Layers</h2>
+    <div class="item"><a href="MIKE-CORE_Public_DomainLayers_v1.0-DUTCH.html">Domain Layers <span class="lang">NL</span></a></div>
+    <div class="item"><a href="MIKE-CORE_Public_DomainLayers_v1.0_EN.html">Domain Layers <span class="lang">EN</span></a></div>
+
+    <!-- MODULES -->
+    <h2 id="modules">Modules Overview</h2>
+    <div class="item"><a href="MIKE-CORE_Public_ModulesOverview_v1.0_DUTCH.html">Modules Overview <span class="lang">NL</span></a></div>
+    <div class="item"><a href="MIKE-CORE_Public_ModulesOverview_v1.0_EN.html">Modules Overview <span class="lang">EN</span></a></div>
+
+    <!-- FLOW -->
+    <h2 id="flow">Flow Principles</h2>
+    <div class="item"><a href="MIKE-CORE_Public_FlowPrinciples_v1.0_DUTCH.html">Flow Principles <span class="lang">NL</span></a></div>
+    <div class="item"><a href="MIKE-CORE_Public_FlowPrinciples_v1.0_EN.html">Flow Principles <span class="lang">EN</span></a></div>
+
+    <!-- STABILITY -->
+    <h2 id="stability">Stability Framework</h2>
+    <div class="item"><a href="MIKE‑CORE_Public_StabilityFramework_v1.0_DUTCH.html">Stability Framework <span class="lang">NL</span></a></div>
+    <div class="item"><a href="MIKE‑CORE_Public_StabilityFramework_v1.0_EN.html">Stability Framework <span class="lang">EN</span></a></div>
+
+    <!-- DRIFT -->
+    <h2 id="drift">Drift Control</h2>
+    <div class="item"><a href="MIKE‑CORE_Public_DriftControl_v1.0_DUTCH.html">Drift Control <span class="lang">NL</span></a></div>
+    <div class="item"><a href="MIKE‑CORE_Public_DriftControl_v1.0_EN.html">Drift Control <span class="lang">EN</span></a></div>
+
+    <!-- AIEWS -->
+    <h2 id="aiews">AIEWS • Public Layer</h2>
+
+    <div class="item"><a href="AIEWS_Public_Overview_v1.0-DUTCH.html">AIEWS Public Overview <span class="lang">NL</span></a></div>
+    <div class="item"><a href="AIEWS_Public_Overview_v1.0-EN.html">AIEWS Public Overview <span class="lang">EN</span></a></div>
+
+    <div class="item"><a href="AIEWS_AI_Ecosystem_Mapping_v1.0-DUTCH.html">AI Ecosystem Mapping <span class="lang">NL</span></a></div>
+    <div class="item"><a href="AIEWS_AI_Ecosystem_Mapping_v1.0-EN.html">AI Ecosystem Mapping <span class="lang">EN</span></a></div>
+
+    <div class="item"><a href="AIEWS_AI_Drift_Stability_v1.0-DUTCH.html">AI Drift & Stability <span class="lang">NL</span></a></div>
+    <div class="item"><a href="AIEWS_AI_Drift_Stability_v1.0-EN.html">AI Drift & Stability <span class="lang">EN</span></a></div>
+
+  </div>
+
+</body>
+</html>
