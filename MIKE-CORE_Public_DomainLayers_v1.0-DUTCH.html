@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE-CORE – Publieke Domeinstructuur (3-laagse weergave)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Publieke weergave van de 3-laagse domeinstructuur binnen het MIKE-CORE IT-ecosysteem." />
+  <meta name="author" content="MIKE Verhelst" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+                  rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero {
+      text-align: left;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 10px rgba(58, 169, 255, 0.9);
+    }
+
+    .hero-title {
+      font-size: 28px;
+      margin: 14px 0 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-soft);
+      max-width: 640px;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+    }
+
+    .section-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-blue-soft);
+    }
+
+    h2, h3, h4 {
+      margin: 14px 0 6px;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 15px;
+      color: var(--accent-blue);
+    }
+
+    h4 {
+      font-size: 14px;
+      color: var(--accent-silver-soft);
+    }
+
+    p {
+      margin: 6px 0 8px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 4px 0 10px 18px;
+      padding: 0;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    li { margin: 3px 0; }
+
+    .layer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .layer-card {
+      background: rgba(11, 16, 32, 0.96);
+      border-radius: 12px;
+      border: 1px solid rgba(27, 34, 53, 0.9);
+      padding: 14px 14px 16px;
+    }
+
+    .layer-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-blue-soft);
+      margin-bottom: 4px;
+    }
+
+    .layer-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-silver);
+      margin-bottom: 6px;
+    }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .glass-panel { padding: 22px 18px 28px; }
+      .hero-title { font-size: 22px; }
+      .section { padding: 16px 14px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE-CORE ECOSYSTEM • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">3‑laagse domeinweergave (publieke versie)</h1>
+        <p class="hero-subtitle">
+          Deze pagina beschrijft hoe MIKE‑CORE in de publieke laag werkt met een driedelige domeinstructuur:
+          een fundamentele ecosysteemlaag, een conceptuele domeinlaag en een module‑ en flowlaag. De interne blueprint,
+          validatieketens en volledige domeinlogica blijven bewust gesloten.
+        </p>
+      </header>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Waarom een 3‑laagse domeinstructuur?</div>
+          <div class="section-tag">Publieke architectuur</div>
+        </div>
+        <p>
+          In de Public Ecosystem Guide wordt MIKE‑CORE beschreven als een architecturale laag die boven frameworks staat
+          en de stabiliteit van het geheel bewaakt. Frameworks zijn gereedschap, ecosystemen zijn fundamenten.
+          De 3‑laagse domeinweergave maakt zichtbaar hoe dat fundament zich vertaalt naar een leesbare publieke structuur,
+          zonder de interne zenuwbanen vrij te geven.
+        </p>
+        <p>
+          De drie lagen zijn:
+        </p>
+        <ul>
+          <li><strong>Laag 1 – Ecosystemische fundamentlaag</strong>: principes, assen en stabiliteitskaders</li>
+          <li><strong>Laag 2 – Conceptuele domeinlaag</strong>: thematische ecosystem‑domeinen</li>
+          <li><strong>Laag 3 – Module‑ en flowlaag</strong>: publieke modules, checks en ecosystemische flows</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Laag 1 – Ecosystemische fundamentlaag</div>
+          <div class="section-tag">Identiteit • Richting • Transitie</div>
+        </div>
+        <p>
+          De fundamentlaag is de laag die nooit rechtstreeks door teams wordt “gebruikt”, maar die alles onderliggend
+          structureert. Hier leven de ecosystemische principes, de I‑, R‑ en T‑as, en de stabiliteits‑ en
+          reproduceerbaarheidskaders.
+        </p>
+        <div class="layer-grid">
+          <div class="layer-card">
+            <div class="layer-label">1.1</div>
+            <div class="layer-title">Ecosystemische principes</div>
+            <p>
+              Deze laag definieert de natuurwetten van het ecosysteem: stabiliteit boven ritme, coherentie boven snelheid
+              en reproduceerbaarheid boven improvisatie. Ze bepalen hoe het systeem zich gedraagt, ongeacht frameworks,
+              tooling of teamstructuur.
+            </p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-label">1.2</div>
+            <div class="layer-title">Assen (I‑, R‑, T‑as)</div>
+            <p>
+              De assen structureren identiteit, richting en transitie. Elke beslissing, module of domein wordt door deze
+              perspectieven gefilterd om drift te beperken en coherentie te bewaren. De interne mapping en validatieketens
+              blijven vertrouwelijk.
+            </p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-label">1.3</div>
+            <div class="layer-title">Stabiliteit & reproduceerbaarheid</div>
+            <p>
+              Hier wordt bepaald hoe reproduceerbaarheid, audit‑veiligheid en voorspelbaarheid worden afgedwongen.
+              Deze laag zorgt ervoor dat dezelfde input tot dezelfde output leidt en dat architectuur niet afhankelijk is
+              van individueel geheugen of improvisatie.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Laag 2 – Conceptuele domeinlaag</div>
+          <div class="section-tag">Ecosystemische domeinen</div>
+        </div>
+        <p>
+          De conceptuele domeinlaag vertaalt de fundamentlaag naar herkenbare ecosystem‑gebieden. In de public edition
+          wordt enkel bevestigd dat domeinen bestaan, dat ze samen een coherent geheel vormen en dat ze ecosystemisch
+          met elkaar verbonden zijn. De exacte domeinstructuur en onderlinge validatieketens blijven intern.
+        </p>
+        <div class="layer-grid">
+          <div class="layer-card">
+            <div class="layer-label">2.1</div>
+            <div class="layer-title">Structuur‑ en architectuurdomeinen</div>
+            <p>
+              Domeinen die zich richten op de globale IT‑architectuur, afhankelijkheden, coherentie en de manier waarop
+              systemen samen een stabiel geheel vormen. Ze bewaken de ruggengraat van het ecosysteem.
+            </p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-label">2.2</div>
+            <div class="layer-title">Operationele en stabiliteitsdomeinen</div>
+            <p>
+              Domeinen die focussen op operationele stabiliteit, drift‑controle, incident‑impact en de reproduceerbaarheid
+              van dagelijkse IT‑operaties. Ze zorgen ervoor dat het ecosysteem onder druk overeind blijft.
+            </p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-label">2.3</div>
+            <div class="layer-title">Mens‑ en governance‑domeinen</div>
+            <p>
+              Domeinen die de menselijke factor, governance en ecosystemische besluitvorming dragen. Geen bureaucratie,
+              maar lichtgewicht structuren die stabiliteit, coherentie en verantwoordelijkheid verankeren.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Laag 3 – Module‑ en flowlaag</div>
+          <div class="section-tag">Publieke modules</div>
+        </div>
+        <p>
+          In de module‑ en flowlaag worden ecosystemische principes tastbaar via concrete, portable modules en
+          gecontroleerde flows. Deze laag is het meest zichtbaar voor teams, maar blijft ingebed in de hogere lagen.
+        </p>
+        <div class="layer-grid">
+          <div class="layer-card">
+            <div class="layer-label">3.1</div>
+            <div class="layer-title">Ecosystemische modules</div>
+            <p>
+              Modules zijn portable ecosystemische componenten die een specifieke functie vervullen en reproduceerbaar
+              blijven binnen het geheel. Voorbeelden in de publieke laag zijn onder andere framework‑diagnostic modules,
+              stability‑check modules en ecosystemic flow modules.
+            </p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-label">3.2</div>
+            <div class="layer-title">Flows & checks</div>
+            <p>
+              Ecosystemische flows beschrijven hoe informatie, beslissingen en veranderingen door het landschap bewegen.
+              Publieke checks kunnen bijvoorbeeld drift‑signalen, afhankelijkheidsrisico’s of incoherentie zichtbaar maken
+              zonder de interne validatieketens vrij te geven.
+            </p>
+          </div>
+          <div class="layer-card">
+            <div class="layer-label">3.3</div>
+            <div class="layer-title">Publieke integratiepunten</div>
+            <p>
+              Dit zijn de raakvlakken waar organisaties MIKE‑CORE kunnen ervaren: via documentatie, publieke modules,
+              ecosystem‑diagnostics en referentiemodellen. Ze laten zien hoe ecosystemisch denken verschilt van
+              framework‑denken, zonder de kernarchitectuur te openen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Publieke grenzen van deze weergave</div>
+          <div class="section-tag">Integrity First</div>
+        </div>
+        <p>
+          Deze 3‑laagse domeinweergave is bewust beperkt. Ze toont de bovenlaag van het ecosysteem, maar niet de interne
+          blueprint, niet de volledige domeinmapping en niet de validatieketens die drift, incoherentie en afhankelijkheidsbreuken
+          in detail bewaken. Die blijven gesloten om de integriteit van MIKE‑CORE te beschermen.
+        </p>
+        <p>
+          Wat zichtbaar is: de filosofie, de lagen en de manier waarop ecosystemisch denken IT‑landschappen structureel
+          stabieler, coherenter en reproduceerbaar maakt. Wat onzichtbaar blijft: de zenuwbanen die het geheel onverwoestbaar
+          maken.
+        </p>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE — Public Ecosystem Layer • 3‑Layer Domain View
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

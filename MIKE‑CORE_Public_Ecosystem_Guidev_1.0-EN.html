@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKECORE Public Ecosystem Guide v1.0 — English Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MIKECORE Public Ecosystem Guide v1.0 — The foundations of ecosystemic IT architecture in an increasingly complex world." />
+  <style>
+    :root {
+      --bg-main: #05070b;
+      --bg-panel: #0c1018;
+      --bg-panel-soft: #101522;
+      --bg-chip: #151b2a;
+      --border-soft: #1f2940;
+      --accent-gold: #f4c15d;
+      --accent-gold-soft: rgba(244, 193, 93, 0.2);
+      --accent-blue: #4aa3ff;
+      --accent-blue-soft: rgba(74, 163, 255, 0.2);
+      --text-main: #f5f7ff;
+      --text-soft: #c3c7d9;
+      --text-muted: #8b90a3;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.65);
+      --radius-panel: 18px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #10182a 0, #05070b 55%, #020308 100%);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 64px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: var(--max-width);
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(260px, 0.9fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 960px) {
+      .page {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .sidebar {
+        position: static;
+        top: auto;
+      }
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel {
+      background: radial-gradient(circle at top left, #151b2a 0, #090c14 55%, #05070b 100%);
+      border-radius: var(--radius-panel);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top right, rgba(244, 193, 93, 0.08), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .panel-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      padding: 26px 24px 24px;
+    }
+
+    .hero-title {
+      font-size: 1.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin: 0 0 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-soft);
+      margin: 0 0 16px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-chip);
+      background: var(--bg-chip);
+      border: 1px solid rgba(244, 193, 93, 0.35);
+      color: var(--text-soft);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .chip.blue {
+      border-color: rgba(74, 163, 255, 0.4);
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-gold);
+    }
+
+    .chip-dot.blue {
+      background: var(--accent-blue);
+    }
+
+    .hero-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    .hero-author {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .hero-badge {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      background: var(--accent-gold-soft);
+      border-radius: var(--radius-chip);
+      padding: 4px 10px;
+      border: 1px solid rgba(244, 193, 93, 0.5);
+    }
+
+    h2.section-title {
+      font-size: 1.15rem;
+      margin: 0 0 10px;
+      color: var(--accent-gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h3.section-subtitle {
+      font-size: 1rem;
+      margin: 16px 0 6px;
+      color: var(--accent-blue);
+    }
+
+    p {
+      margin: 0 0 10px;
+      font-size: 0.94rem;
+      line-height: 1.55;
+      color: var(--text-soft);
+    }
+
+    ul {
+      margin: 0 0 10px 18px;
+      padding: 0;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .callout {
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(135deg, rgba(244, 193, 93, 0.08), rgba(10, 14, 24, 0.95));
+      padding: 10px 12px;
+      margin: 10px 0 4px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .callout strong {
+      color: var(--accent-gold);
+    }
+
+    .divider {
+      height: 1px;
+      border: none;
+      margin: 14px 0 10px;
+      background: linear-gradient(to right, rgba(244, 193, 93, 0.4), rgba(74, 163, 255, 0.2), transparent);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      align-self: flex-start;
+    }
+
+    .sidebar-panel {
+      background: radial-gradient(circle at top, #151b2a 0, #090c14 55%, #05070b 100%);
+      border-radius: var(--radius-panel);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 14px 14px;
+    }
+
+    .sidebar-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin: 0 0 8px;
+    }
+
+    .toc {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.86rem;
+    }
+
+    .toc li {
+      margin-bottom: 4px;
+    }
+
+    .toc a {
+      color: var(--text-soft);
+      text-decoration: none;
+      padding: 4px 6px;
+      border-radius: 8px;
+      display: block;
+      border: 1px solid transparent;
+    }
+
+    .toc a:hover {
+      border-color: rgba(244, 193, 93, 0.4);
+      background: rgba(15, 20, 32, 0.9);
+      color: var(--accent-gold);
+    }
+
+    .toc small {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    .toc-section-label {
+      margin-top: 6px;
+      margin-bottom: 2px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: rgba(10, 14, 24, 0.9);
+      padding: 1px 4px;
+      border-radius: 4px;
+      border: 1px solid rgba(31, 41, 64, 0.9);
+      color: var(--accent-blue);
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    a.inline-link {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    a.inline-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="main">
+      <!-- HERO / COVER -->
+      <section id="cover" class="panel hero">
+        <div class="panel-inner">
+          <div class="hero-meta">
+            <span class="chip">
+              <span class="chip-dot"></span>
+              MIKECORE — Public Edition
+            </span>
+            <span class="chip blue">
+              <span class="chip-dot blue"></span>
+              Ecosystemic IT Architecture
+            </span>
+          </div>
+          <h1 class="hero-title">MIKECORE Public Ecosystem Guide v1.0</h1>
+          <p class="hero-subtitle">
+            The foundations of ecosystemic IT architecture in an increasingly complex world.
+          </p>
+          <p class="hero-author">
+            <strong>Author:</strong> MIKE Verhelst — Architect of the MIKECORE Ecosystem<br />
+            <strong>Version:</strong> Public Edition — Core and blueprint not included
+          </p>
+          <div class="hero-footer">
+            <div class="footer-note">
+              © 2026 MIKECORE — All Rights Reserved.<br />
+              This publication may be shared and cited as long as the content is not modified and MIKECORE is credited as the source.
+            </div>
+            <span class="hero-badge">Public Ecosystem Layer</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOREWORD -->
+      <section id="foreword" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Foreword</h2>
+          <p>
+            The IT world is evolving faster than organizations can follow. Systems are becoming more complex,
+            dependencies are growing, and traditional frameworks are increasingly failing to guarantee stability.
+            In this context, MIKECORE emerged — an ecosystem that does not try to make teams work faster, but
+            instead aims to make IT structurally more stable, coherent, and reproducible.
+          </p>
+          <p>This guide is written for:</p>
+          <ul>
+            <li>IT architects</li>
+            <li>CTOs and CIOs</li>
+            <li>Team leads</li>
+            <li>Enterprise organizations</li>
+            <li>Anyone who feels that frameworks are no longer sufficient</li>
+          </ul>
+          <p>
+            This publication is a public introduction. The core, blueprint, validation chains, and internal
+            ecosystemic logic remain deliberately closed to protect the integrity of the ecosystem.
+          </p>
+          <p><strong>What you do get:</strong></p>
+          <ul>
+            <li>the philosophy</li>
+            <li>the high-level structure</li>
+            <li>the principles</li>
+            <li>the public architectural layers</li>
+            <li>the way ecosystemic thinking transforms IT</li>
+          </ul>
+          <p><strong>What you do not get:</strong></p>
+          <ul>
+            <li>internal domain architecture</li>
+            <li>validation chains</li>
+            <li>TRIAD core</li>
+            <li>ecosystemic nerve pathways</li>
+            <li>implementation details</li>
+          </ul>
+          <p>
+            This guide is intended to inspire, inform, and lay a foundation for organizations that are ready
+            for the next step in IT architecture.
+          </p>
+        </div>
+      </section>
+
+      <!-- CRISIS OF MODERN IT -->
+      <section id="crisis-modern-it" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">The Crisis of Modern IT</h2>
+          <p>
+            The IT sector is in a structural crisis that is rarely named explicitly. Not because technology is
+            failing, but because our way of organizing no longer matches reality.
+          </p>
+
+          <h3 class="section-subtitle">1. Complexity grows faster than structure</h3>
+          <p>Modern systems consist of:</p>
+          <ul>
+            <li>microservices</li>
+            <li>cloud platforms</li>
+            <li>API chains</li>
+            <li>distributed workloads</li>
+            <li>hybrid infrastructures</li>
+          </ul>
+          <p>But the structures that are supposed to carry these systems are often:</p>
+          <ul>
+            <li>ad hoc</li>
+            <li>team-based</li>
+            <li>dependent on individual memory</li>
+            <li>not reproducible</li>
+          </ul>
+
+          <h3 class="section-subtitle">2. Dependencies are the real bottleneck</h3>
+          <p>
+            It is not technology that fails — it is the invisible dependencies between teams, systems, and processes.
+          </p>
+          <p>Frameworks such as Scrum or Kanban:</p>
+          <ul>
+            <li>visualize work</li>
+            <li>organize rhythm</li>
+            <li>create ceremonies</li>
+          </ul>
+          <p>
+            But they do not manage dependencies. And dependencies are exactly where systems break.
+          </p>
+
+          <h3 class="section-subtitle">3. Drift is everywhere</h3>
+          <p>
+            <strong>Drift</strong> = the spontaneous deviation from:
+          </p>
+          <ul>
+            <li>agreements</li>
+            <li>structure</li>
+            <li>direction</li>
+            <li>quality</li>
+            <li>architecture</li>
+          </ul>
+          <p>
+            Drift arises automatically in any system that lacks ecosystemic stability.
+            Frameworks do not detect drift. Ecosystems do.
+          </p>
+
+          <h3 class="section-subtitle">4. Framework inflation</h3>
+          <p>Organizations stack frameworks:</p>
+          <ul>
+            <li>Scrum</li>
+            <li>SAFe</li>
+            <li>ITIL</li>
+            <li>DevOps</li>
+            <li>Kanban</li>
+            <li>Lean</li>
+            <li>Agile variants</li>
+          </ul>
+          <p>
+            But frameworks do not solve structural problems. They mask them with rhythm, ceremonies,
+            and process optimization.
+          </p>
+          <div class="callout">
+            <strong>The crisis is not technological. The crisis is architectural.</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY ECOSYSTEM THINKING -->
+      <section id="why-ecosystem-thinking" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Why Ecosystemic Thinking Is Needed</h2>
+          <p>
+            For years, the IT world has tried to control complexity with frameworks, methodologies, and process
+            optimization. But frameworks are designed for teams, not for ecosystems. They focus on rhythm,
+            ceremonies, and work visualization — not on stability, dependencies, or reproducibility.
+          </p>
+
+          <h3 class="section-subtitle">1. Frameworks optimize locally, ecosystems optimize globally</h3>
+          <p>
+            Scrum optimizes a single team. Kanban optimizes flow. DevOps optimizes collaboration.
+          </p>
+          <p>But no framework optimizes:</p>
+          <ul>
+            <li>the coherence between teams</li>
+            <li>the stability of the whole</li>
+            <li>the dependencies between systems</li>
+            <li>the reproducibility of architecture</li>
+          </ul>
+          <p>Ecosystems do.</p>
+
+          <h3 class="section-subtitle">2. Modern IT is too complex for team-level solutions</h3>
+          <p>An organization does not consist of one team. It consists of:</p>
+          <ul>
+            <li>dozens of teams</li>
+            <li>hundreds of systems</li>
+            <li>thousands
+            <li>thousands of dependencies</li>
+          </ul>
+          <p>
+            Frameworks cannot carry this complexity. Ecosystems are built for it.
+          </p>
+
+          <h3 class="section-subtitle">3. Ecosystems prevent chaos where frameworks do not see it</h3>
+          <p>Frameworks detect:</p>
+          <ul>
+            <li>delays</li>
+            <li>blockers</li>
+            <li>inefficiency</li>
+          </ul>
+          <p>Ecosystems detect:</p>
+          <ul>
+            <li>drift</li>
+            <li>dependency fractures</li>
+            <li>incoherence</li>
+            <li>architectural instability</li>
+          </ul>
+          <p>
+            That is the difference between symptoms and causes.
+          </p>
+
+          <h3 class="section-subtitle">4. Ecosystems create calm instead of rhythm</h3>
+          <p>Frameworks create rhythm. Ecosystems create calm.</p>
+          <p><strong>Calm</strong> means:</p>
+          <ul>
+            <li>predictability</li>
+            <li>stability</li>
+            <li>reproducibility</li>
+            <li>coherence</li>
+          </ul>
+          <p>
+            Calm is the basis on which rhythm can exist — not the other way around.
+          </p>
+        </div>
+      </section>
+
+      <!-- COHERENCE AND STABILITY (CONTINUED) -->
+      <section id="coherence-stability-continued" class="panel">
+        <div class="panel-inner">
+          <h3 class="section-subtitle">4. Why stability collapses without ecosystemic structure</h3>
+          <p>
+            When teams work independently without ecosystemic alignment, the following happens:
+          </p>
+          <ul>
+            <li>architectural drift increases</li>
+            <li>dependencies become invisible</li>
+            <li>documentation becomes inconsistent</li>
+            <li>systems evolve in conflicting directions</li>
+            <li>risk becomes unpredictable</li>
+          </ul>
+          <p>
+            Stability is not the result of discipline — it is the result of structure.
+          </p>
+
+          <h3 class="section-subtitle">5. Stability enables innovation</h3>
+          <p>
+            Many organizations believe stability slows innovation. The opposite is true.
+          </p>
+          <p>Stability enables:</p>
+          <ul>
+            <li>safe experimentation</li>
+            <li>predictable change</li>
+            <li>scalable growth</li>
+            <li>controlled risk</li>
+          </ul>
+          <p>
+            Innovation without stability is chaos. Stability without innovation is stagnation.
+            Ecosystems create both.
+          </p>
+        </div>
+      </section>
+
+      <!-- DEPENDENCY MANAGEMENT -->
+      <section id="dependency-management" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Dependency Management</h2>
+          <p>
+            Dependencies are the invisible architecture of every IT landscape. They determine how systems,
+            teams, and processes interact. When dependencies are not managed ecosystemically, instability
+            becomes inevitable.
+          </p>
+
+          <h3 class="section-subtitle">1. The problem with hidden dependencies</h3>
+          <p>Hidden dependencies cause:</p>
+          <ul>
+            <li>unexpected failures</li>
+            <li>delays</li>
+            <li>architectural fractures</li>
+            <li>team conflicts</li>
+            <li>security risks</li>
+          </ul>
+
+          <h3 class="section-subtitle">2. Ecosystemic dependency visibility</h3>
+          <p>
+            MIKECORE ensures that dependencies are:
+          </p>
+          <ul>
+            <li>visible</li>
+            <li>mapped</li>
+            <li>validated</li>
+            <li>monitored</li>
+          </ul>
+
+          <h3 class="section-subtitle">3. Dependency stability</h3>
+          <p>
+            A dependency is stable when:
+          </p>
+          <ul>
+            <li>its identity is clear</li>
+            <li>its direction is aligned</li>
+            <li>its transition path is controlled</li>
+          </ul>
+          <p>
+            This is why the I‑R‑T axes exist.
+          </p>
+        </div>
+      </section>
+
+      <!-- DRIFT -->
+      <section id="drift" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Drift</h2>
+          <p>
+            Drift is the silent killer of IT systems. It is the spontaneous deviation from structure,
+            agreements, architecture, or direction.
+          </p>
+
+          <h3 class="section-subtitle">1. How drift emerges</h3>
+          <p>Drift emerges when:</p>
+          <ul>
+            <li>teams improvise</li>
+            <li>documentation is incomplete</li>
+            <li>dependencies shift unnoticed</li>
+            <li>architecture is not guarded</li>
+            <li>frameworks are used without ecosystemic alignment</li>
+          </ul>
+
+          <h3 class="section-subtitle">2. Types of drift</h3>
+          <ul>
+            <li><strong>Architectural drift</strong> — structure deviates</li>
+            <li><strong>Process drift</strong> — teams deviate from agreements</li>
+            <li><strong>Dependency drift</strong> — relationships shift</li>
+            <li><strong>Identity drift</strong> — roles or modules lose clarity</li>
+          </ul>
+
+          <h3 class="section-subtitle">3. Drift control</h3>
+          <p>
+            MIKECORE contains ecosystemic mechanisms to:
+          </p>
+          <ul>
+            <li>detect drift</li>
+            <li>isolate drift</li>
+            <li>correct drift</li>
+          </ul>
+          <p>
+            Without drift control, every IT landscape collapses over time.
+          </p>
+        </div>
+      </section>
+
+      <!-- FRAMEWORKS -->
+      <section id="frameworks" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Frameworks</h2>
+          <p>
+            Frameworks are tools — not foundations. They are useful, but they cannot replace ecosystemic
+            architecture.
+          </p>
+
+          <h3 class="section-subtitle">1. What frameworks do well</h3>
+          <ul>
+            <li>organize rhythm</li>
+            <li>visualize work</li>
+            <li>improve collaboration</li>
+            <li>create structure for teams</li>
+          </ul>
+
+          <h3 class="section-subtitle">2. What frameworks cannot do</h3>
+          <ul>
+            <li>manage dependencies</li>
+            <li>prevent drift</li>
+            <li>ensure reproducibility</li>
+            <li>guarantee architectural stability</li>
+            <li>align teams ecosystemically</li>
+          </ul>
+
+          <h3 class="section-subtitle">3. Frameworks inside an ecosystem</h3>
+          <p>
+            Frameworks work best when they operate inside an ecosystem that provides:
+          </p>
+          <ul>
+            <li>stability</li>
+            <li>coherence</li>
+            <li>direction</li>
+            <li>transition control</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TEAMS -->
+      <section id="teams" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Teams</h2>
+          <p>
+            Teams are the operational units of IT. But without ecosystemic alignment, teams drift apart,
+            create conflicting structures, and introduce instability.
+          </p>
+
+          <h3 class="section-subtitle">1. Team identity</h3>
+          <p>
+            Every team must have a clear identity:
+          </p>
+          <ul>
+            <li>what they own</li>
+            <li>what they deliver</li>
+            <li>what their boundaries are</li>
+            <li>how they fit into the ecosystem</li>
+          </ul>
+
+          <h3 class="section-subtitle">2. Team direction</h3>
+          <p>
+            Teams must align with the ecosystemic direction to avoid fragmentation.
+          </p>
+
+          <h3 class="section-subtitle">3. Team transition</h3>
+          <p>
+            Teams evolve — but evolution must be controlled to prevent drift.
+          </p>
+        </div>
+      </section>
+
+      <!-- GOVERNANCE -->
+      <section id="governance" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Governance</h2>
+          <p>
+            Governance in MIKECORE is lightweight but unbreakable. It ensures stability without bureaucracy.
+          </p>
+
+          <h3 class="section-subtitle">1. Governance principles</h3>
+          <ul>
+            <li>minimal rules</li>
+            <li>maximum stability</li>
+            <li>ecosystemic alignment</li>
+            <li>drift prevention</li>
+            <li>dependency control</li>
+          </ul>
+
+          <h3 class="section-subtitle">2. Governance is not management</h3>
+          <p>
+            Governance guards the ecosystem — it does not manage teams.
+          </p>
+
+          <h3 class="section-subtitle">3. Governance ensures reproducibility</h3>
+          <p>
+            Without governance, reproducibility collapses.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECURITY -->
+      <section id="security" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Security</h2>
+          <p>
+            Security is not a separate domain — it is an ecosystemic property.
+          </p>
+
+          <h3 class="section-subtitle">1. Ecosystemic security</h3>
+          <p>
+            Security emerges from:
+          </p>
+          <ul>
+            <li>coherence</li>
+            <li>stability</li>
+            <li>reproducibility</li>
+            <li>dependency visibility</li>
+            <li>drift control</li>
+          </ul>
+
+          <h3 class="section-subtitle">2. Security without stability is impossible</h3>
+          <p>
+            A system that is not stable cannot be secure.
+          </p>
+
+          <h3 class="section-subtitle">3. Security as a natural outcome</h3>
+          <p>
+            In MIKECORE, security is not added — it emerges naturally from the ecosystem.
+          </p>
+        </div>
+      </section>
+
+      <!-- USE CASES -->
+      <section id="use-cases" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Use Cases</h2>
+          <p>
+            MIKECORE is applicable in any environment where stability, coherence, and reproducibility are
+            essential.
+          </p>
+
+          <h3 class="section-subtitle">1. Large organizations</h3>
+          <p>
+            With many teams, systems, and dependencies, ecosystems provide the structure needed to prevent
+            chaos.
+          </p>
+
+          <h3 class="section-subtitle">2. High‑risk environments</h3>
+          <p>
+            Where failure is not an option, reproducibility and stability are essential.
+          </p>
+
+          <h3 class="section-subtitle">3. Rapidly evolving landscapes</h3>
+          <p>
+            Ecosystems allow safe evolution without drift.
+          </p>
+        </div>
+      </section>
+
+      <!-- WHAT IS NOT INCLUDED -->
+      <section id="not-included" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">What Is Not Included in This Public Edition</h2>
+          <p>
+            To protect the integrity of the ecosystem, the following components remain closed:
+          </p>
+          <ul>
+            <li>internal domain architecture</li>
+            <li>validation chains</li>
+            <li>TRIAD core</li>
+            <li>ecosystemic nerve pathways</li>
+            <li>implementation details</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- LICENSE -->
+      <section id="license" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">License</h2>
+          <p>
+            This publication may be shared and cited as long as:
+          </p>
+          <ul>
+            <li>the content is not modified</li>
+            <li>MIKECORE is credited as the source</li>
+            <li>the publication is not used commercially</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CONCLUSION -->
+      <section id="conclusion" class="panel">
+        <div class="panel-inner">
+          <h2 class="section-title">Conclusion</h2>
+          <p>
+            MIKECORE is not a framework. It is an ecosystemic architecture designed to bring stability,
+            coherence, and reproducibility to an increasingly complex IT world.
+          </p>
+          <p>
+            This public guide provides the philosophical and conceptual foundation. The internal blueprint
+            remains closed to protect the integrity of the ecosystem.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>

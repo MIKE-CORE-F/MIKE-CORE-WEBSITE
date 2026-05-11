@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE-CORE – Public 3‑Layer Domain View v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Public 3-layer domain structure of the MIKE-CORE IT ecosystem." />
+  <meta name="author" content="MIKE Verhelst" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+                  rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero {
+      text-align: left;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 10px rgba(58, 169, 255, 0.9);
+    }
+
+    .hero-title {
+      font-size: 28px;
+      margin: 14px 0 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-soft);
+      max-width: 640px;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+    }
+
+    .section-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-blue-soft);
+    }
+
+    h3 {
+      font-size: 15px;
+      color: var(--accent-blue);
+      margin: 14px 0 6px;
+    }
+
+    p {
+      margin: 6px 0 8px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 4px 0 10px 18px;
+      padding: 0;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    li { margin: 3px 0; }
+
+    .layer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .layer-card {
+      background: rgba(11, 16, 32, 0.96);
+      border-radius: 12px;
+      border: 1px solid rgba(27, 34, 53, 0.9);
+      padding: 14px 14px 16px;
+    }
+
+    .layer-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-blue-soft);
+      margin-bottom: 4px;
+    }
+
+    .layer-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-silver);
+      margin-bottom: 6px;
+    }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE-CORE ECOSYSTEM • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">Public 3‑Layer Domain View</h1>
+        <p class="hero-subtitle">
+          This page introduces the public 3‑layer domain structure of MIKE‑CORE: the ecosystem foundation layer,
+          the conceptual domain layer, and the module‑and‑flow layer. The internal blueprint, validation chains and
+          domain logic remain intentionally closed.
+        </p>
+      </header>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Why a 3‑Layer Domain Structure?</div>
+          <div class="section-tag">Public Architecture</div>
+        </div>
+        <p>
+          MIKE‑CORE is described as an architectural layer that sits above frameworks and safeguards the stability of the whole.
+          Frameworks are tools. Ecosystems are foundations.  
+          The 3‑layer domain view makes this visible without exposing internal mechanics.
+        </p>
+        <ul>
+          <li><strong>Layer 1 – Ecosystem Foundation</strong>: principles, axes, stability frameworks</li>
+          <li><strong>Layer 2 – Conceptual Domains</strong>: thematic ecosystem areas</li>
+          <li><strong>Layer 3 – Modules & Flows</strong>: public modules, checks and ecosystem flows</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Layer 1 – Ecosystem Foundation</div>
+          <div class="section-tag">Identity • Direction • Transition</div>
+        </div>
+        <p>
+          The foundation layer structures everything beneath the surface. It contains the ecosystem principles,
+          the I‑, R‑ and T‑axis, and the stability and reproducibility frameworks.
+        </p>
+
+        <div class="layer-grid">
+          <div class="layer-card">
+            <div class="layer-label">1.1</div>
+            <div class="layer-title">Ecosystem Principles</div>
+            <p>
+              These principles define the natural laws of the ecosystem: stability over rhythm, coherence over speed,
+              and reproducibility over improvisation.
+            </p>
+          </div>
+
+          <div class="layer-card">
+            <div class="layer-label">1.2</div>
+            <div class="layer-title">Axes (I‑, R‑, T‑Axis)</div>
+            <p>
+              The axes structure identity, direction and transition. Every decision, module or domain is filtered through
+              these perspectives to prevent drift and maintain coherence.
+            </p>
+          </div>
+
+          <div class="layer-card">
+            <div class="layer-label">1.3</div>
+            <div class="layer-title">Stability & Reproducibility</div>
+            <p>
+              This layer ensures predictable outcomes, audit‑safety and architectural consistency.  
+              Same input → same output. Same structure → same stability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Layer 2 – Conceptual Domains</div>
+          <div class="section-tag">Ecosystem Domains</div>
+        </div>
+        <p>
+          The conceptual domain layer translates the foundation into recognizable ecosystem areas.  
+          Only the existence of domains is public — not their internal mapping or validation chains.
+        </p>
+
+        <div class="layer-grid">
+          <div class="layer-card">
+            <div class="layer-label">2.1</div>
+            <div class="layer-title">Structural & Architectural Domains</div>
+            <p>
+              Domains focused on global IT architecture, dependencies and coherence.  
+              They safeguard the backbone of the ecosystem.
+            </p>
+          </div>
+
+          <div class="layer-card">
+            <div class="layer-label">2.2</div>
+            <div class="layer-title">Operational & Stability Domains</div>
+            <p>
+              Domains that focus on operational stability, drift control, incident impact and reproducibility of daily IT operations.
+            </p>
+          </div>
+
+          <div class="layer-card">
+            <div class="layer-label">2.3</div>
+            <div class="layer-title">Human & Governance Domains</div>
+            <p>
+              Domains that carry the human factor, governance and ecosystem decision‑making.  
+              Lightweight structures, maximum stability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Layer 3 – Modules & Flows</div>
+          <div class="section-tag">Public Modules</div>
+        </div>
+        <p>
+          The module‑and‑flow layer makes ecosystem principles tangible through portable modules and controlled flows.
+          This is the most visible layer for teams.
+        </p>
+
+        <div class="layer-grid">
+          <div class="layer-card">
+            <div class="layer-label">3.1</div>
+            <div class="layer-title">Ecosystem Modules</div>
+            <p>
+              Portable components that remain coherent and reproducible within the ecosystem.  
+              Examples include framework diagnostic modules, stability checks and ecosystem flow modules.
+            </p>
+          </div>
+
+          <div class="layer-card">
+            <div class="layer-label">3.2</div>
+            <div class="layer-title">Flows & Checks</div>
+            <p>
+              Ecosystem flows describe how information and decisions move through the landscape.  
+              Public checks reveal drift signals or dependency risks without exposing internal chains.
+            </p>
+          </div>
+
+          <div class="layer-card">
+            <div class="layer-label">3.3</div>
+            <div class="layer-title">Public Integration Points</div>
+            <p>
+              These are the touchpoints where organizations experience MIKE‑CORE: documentation, public modules,
+              diagnostics and reference models.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Public Boundaries</div>
+          <div class="section-tag">Integrity First</div>
+        </div>
+        <p>
+          This 3‑layer view intentionally reveals only the upper structure of the ecosystem.  
+          The internal blueprint, domain mapping and validation chains remain closed to protect the integrity of MIKE‑CORE.
+        </p>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE — Public Ecosystem Layer • 3‑Layer Domain View
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
