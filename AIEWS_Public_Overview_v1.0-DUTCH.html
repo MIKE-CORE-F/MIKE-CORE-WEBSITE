@@ -4,157 +4,173 @@
   <meta charset="UTF-8" />
   <title>AIEWS • Public Overview (NL)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="MIKE Verhelst" />
+  <meta name="copyright" content="© 2026 MIKE‑CORE / AIEWS — All Rights Reserved" />
 
   <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
     body {
       margin: 0;
-      background: #050814;
-      color: #e5ecf7;
-      font-family: system-ui, sans-serif;
-      display: flex;
-    }
-
-    .sidebar {
-      width: 300px;
-      background: rgba(10, 15, 30, 0.85);
-      backdrop-filter: blur(10px);
-      border-right: 1px solid rgba(58,169,255,0.25);
-      height: 100vh;
-      position: sticky;
-      top: 0;
-      padding: 20px;
-      overflow-y: auto;
-      text-align: center;
-    }
-
-    .logo {
-      width: 260px;
-      margin: 0 auto 20px auto;
-      display: block;
-      filter: drop-shadow(0 0 18px rgba(58,169,255,1));
-    }
-
-    .tagline {
-      font-size: 12px;
-      color: #9ccaff;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-shadow: 0 0 8px rgba(58,169,255,0.6);
-    }
-
-    .nav-section-title {
-      font-size: 12px;
-      color: #7b8496;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-      text-align: left;
-    }
-
-    .nav-link {
-      display: block;
-      padding: 8px 10px;
-      margin-bottom: 6px;
-      border-radius: 6px;
-      color: #9ccaff;
-      text-decoration: none;
-      font-size: 14px;
-      text-align: left;
-    }
-
-    .nav-link:hover {
-      background: rgba(58,169,255,0.15);
-      color: #3aa9ff;
-    }
-
-    .content {
-      flex: 1;
-      padding: 40px;
-      max-width: 900px;
-    }
-
-    h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 16px;
-      color: #7b8496;
-      text-transform: uppercase;
-      margin-top: 30px;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    p {
-      line-height: 1.6;
-      font-size: 15px;
-    }
-
-    ul {
-      padding-left: 20px;
-      font-size: 15px;
+      padding: 0;
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      font-family: var(--font-main);
       line-height: 1.6;
     }
 
-    li {
-      margin-bottom: 6px;
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 16px 80px; }
+
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(58,169,255,0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(207,216,227,0.08), transparent 60%),
+                  rgba(5,8,20,0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58,169,255,0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-panel::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(58,169,255,0.12), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(207,216,227,0.10), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header.hero {
+      text-align: left;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58,169,255,0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58,169,255,0.18), rgba(207,216,227,0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 10px rgba(58,169,255,0.9);
+    }
+
+    .hero-title { font-size: 32px; margin: 14px 0 4px; letter-spacing: 0.03em; text-transform: uppercase; }
+    .hero-subtitle { font-size: 16px; color: var(--text-soft); max-width: 640px; }
+
+    .section {
+      margin-top: 32px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11,16,32,0.96), rgba(5,8,20,0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: 18px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--accent-silver); margin-bottom: 10px;
+    }
+
+    p, ul, li { font-size: 14px; color: var(--text-soft); }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
     }
   </style>
 </head>
 
 <body>
+  <div class="page-wrap">
+    <div class="glass-panel">
 
-  <div class="sidebar">
-    <img class="logo" src="mikecore_logo.png" alt="MIKE-CORE Logo">
-    <div class="tagline">The Architect of a New IT Ecosystem</div>
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>AIEWS • PUBLIC EDITION</span>
+        </div>
 
-    <div class="nav-section-title">Navigation</div>
-    <a class="nav-link" href="index.html#ecosystem">Ecosystem</a>
-    <a class="nav-link" href="index.html#domain">Domains</a>
-    <a class="nav-link" href="index.html#modules">Modules</a>
-    <a class="nav-link" href="index.html#flow">Flow</a>
-    <a class="nav-link" href="index.html#stability">Stability</a>
-    <a class="nav-link" href="index.html#drift">Drift</a>
-    <a class="nav-link" href="index.html#aiews">AIEWS</a>
+        <h1 class="hero-title">AIEWS • Public Overview</h1>
+
+        <p class="hero-subtitle">
+          AIEWS is de AI‑bewakingslaag binnen het MIKE‑CORE ecosysteem.  
+          Het bewaakt context, drift, stabiliteit en audit‑sporen over alle lagen heen.
+        </p>
+      </header>
+
+      <section class="section">
+        <div class="section-title">Doel van AIEWS</div>
+        <p>
+          Het doel van AIEWS is niet om mensen te vervangen, maar om hen te beschermen:
+          tegen chaotische groei, onzichtbare drift en onbewuste schending van doctrine.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Publieke scope</div>
+        <ul>
+          <li><strong>Transparantie:</strong> duidelijk maken wat AIEWS wel en niet doet.</li>
+          <li><strong>Stabiliteit:</strong> helpen voorkomen dat IT‑omgevingen instorten onder druk.</li>
+          <li><strong>Drift‑controle:</strong> afwijkingen detecteren en corrigeren.</li>
+          <li><strong>Audit‑sporen:</strong> beslissingen en wijzigingen herleidbaar houden.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Relatie met MIKE‑CORE</div>
+        <p>
+          AIEWS is ontworpen als een beschermlaag rond MIKE‑CORE: het bewaakt doctrine, structuur
+          en ecosystemische grenzen, zodat uitbreidingen nooit de kern breken.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Volgende documenten</div>
+        <ul>
+          <li>AIEWS • AI Ecosystem Mapping (NL/EN)</li>
+          <li>AIEWS • AI Drift & Stability (NL/EN)</li>
+        </ul>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE / AIEWS — All Rights Reserved
+      </div>
+
+    </div>
   </div>
-
-  <div class="content">
-    <h1>AIEWS • Public Overview</h1>
-    <p>
-      AIEWS is de AI‑bewakingslaag binnen het MIKE‑CORE ecosysteem.  
-      Het bewaakt context, drift, stabiliteit en audit‑sporen over alle lagen heen, zodat
-      techniekers en architecten veilig kunnen bouwen zonder de kernprincipes te breken.
-    </p>
-
-    <h2>Doel van AIEWS</h2>
-    <p>
-      Het doel van AIEWS is niet om mensen te vervangen, maar om hen te beschermen:
-      tegen chaotische groei, onzichtbare drift en onbewuste schending van doctrine.
-    </p>
-
-    <h2>Publieke scope</h2>
-    <ul>
-      <li><strong>Transparantie:</strong> duidelijk maken wat AIEWS wel en niet doet.</li>
-      <li><strong>Stabiliteit:</strong> helpen voorkomen dat IT‑omgevingen instorten onder druk.</li>
-      <li><strong>Drift‑controle:</strong> afwijkingen detecteren en terug naar de kern leiden.</li>
-      <li><strong>Audit‑sporen:</strong> beslissingen en wijzigingen herleidbaar houden.</li>
-    </ul>
-
-    <h2>Relatie met MIKE‑CORE</h2>
-    <p>
-      AIEWS is ontworpen als een beschermlaag rond MIKE‑CORE: het bewaakt doctrine, structuur
-      en ecosystemische grenzen, zodat uitbreidingen nooit de kern breken.
-    </p>
-
-    <h2>Volgende documenten</h2>
-    <ul>
-      <li>AIEWS • AI Ecosystem Mapping (NL/EN)</li>
-      <li>AIEWS • AI Drift & Stability (NL/EN)</li>
-    </ul>
-  </div>
-
 </body>
 </html>
