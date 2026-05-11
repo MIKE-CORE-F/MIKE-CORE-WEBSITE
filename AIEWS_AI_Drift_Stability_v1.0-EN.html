@@ -4,184 +4,167 @@
   <meta charset="UTF-8" />
   <title>AIEWS • AI Drift & Stability (EN)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="MIKE Verhelst" />
+  <meta name="copyright" content="© 2026 MIKE‑CORE / AIEWS — All Rights Reserved" />
 
   <style>
+    :root {
+      --bg-main:#050814;--bg-panel:#0b1020;--bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;--accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;--accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;--text-soft:#b5c0d4;--text-muted:#7b8496;
+      --border-soft:#1b2235;--shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;--radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
     body {
-      margin: 0;
-      background: #050814;
-      color: #e5ecf7;
-      font-family: system-ui, sans-serif;
-      display: flex;
+      margin:0;padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);font-family:var(--font-main);line-height:1.6;
     }
 
-    .sidebar {
-      width: 300px;
-      background: rgba(10, 15, 30, 0.85);
-      backdrop-filter: blur(10px);
-      border-right: 1px solid rgba(58,169,255,0.25);
-      height: 100vh;
-      position: sticky;
-      top: 0;
-      padding: 20px;
-      overflow-y: auto;
-      text-align: center;
+    .page-wrap {max-width:1100px;margin:0 auto;padding:40px 16px 80px;}
+
+    .glass-panel {
+      background:radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+                 rgba(5,8,20,0.92);
+      border-radius:24px;border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);padding:32px 26px 40px;position:relative;overflow:hidden;
     }
 
-    .logo {
-      width: 260px;
-      margin: 0 auto 20px auto;
-      display: block;
-      filter: drop-shadow(0 0 18px rgba(58,169,255,1));
+    .glass-panel::before {
+      content:"";position:absolute;inset:-40%;
+      background:radial-gradient(circle at 10% 0%,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at 90% 100%,rgba(207,216,227,0.10),transparent 55%);
+      opacity:.7;pointer-events:none;z-index:-1;
     }
 
-    .tagline {
-      font-size: 12px;
-      color: #9ccaff;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-shadow: 0 0 8px rgba(58,169,255,0.6);
+    header.hero {
+      text-align:left;margin-bottom:32px;
+      border-bottom:1px solid rgba(58,169,255,0.35);padding-bottom:20px;
     }
 
-    .nav-section-title {
-      font-size: 12px;
-      color: #7b8496;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-      text-align: left;
+    .hero-kicker {
+      display:inline-flex;align-items:center;gap:8px;
+      padding:4px 14px;border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
     }
 
-    .nav-link {
-      display: block;
-      padding: 8px 10px;
-      margin-bottom: 6px;
-      border-radius: 6px;
-      color: #9ccaff;
-      text-decoration: none;
-      font-size: 14px;
-      text-align: left;
+    .hero-kicker-dot {
+      width:8px;height:8px;border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
     }
 
-    .nav-link:hover {
-      background: rgba(58,169,255,0.15);
-      color: #3aa9ff;
+    .hero-title {font-size:32px;margin:14px 0 4px;text-transform:uppercase;}
+    .hero-subtitle {font-size:16px;color:var(--text-soft);max-width:640px;}
+
+    .section {
+      margin-top:32px;padding:20px 18px 22px;border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
     }
 
-    .content {
-      flex: 1;
-      padding: 40px;
-      max-width: 900px;
+    .section-title {
+      font-size:18px;font-weight:600;letter-spacing:.06em;
+      text-transform:uppercase;color:var(--accent-silver);margin-bottom:10px;
     }
 
-    h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
+    p,ul,li {font-size:14px;color:var(--text-soft);}
 
-    h2 {
-      font-size: 16px;
-      color: #7b8496;
-      text-transform: uppercase;
-      margin-top: 30px;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    p {
-      line-height: 1.6;
-      font-size: 15px;
-    }
-
-    ul {
-      padding-left: 20px;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    li {
-      margin-bottom: 6px;
+    .footer-note {
+      margin-top:26px;font-size:11px;color:var(--text-muted);text-align:right;
     }
   </style>
 </head>
 
 <body>
+<div class="page-wrap">
+<div class="glass-panel">
 
-  <div class="sidebar">
-    <img class="logo" src="mikecore_logo.png" alt="MIKE-CORE Logo">
-    <div class="tagline">The Architect of a New IT Ecosystem</div>
-
-    <div class="nav-section-title">Navigation</div>
-    <a class="nav-link" href="index.html#ecosystem">Ecosystem</a>
-    <a class="nav-link" href="index.html#domain">Domains</a>
-    <a class="nav-link" href="index.html#modules">Modules</a>
-    <a class="nav-link" href="index.html#flow">Flow</a>
-    <a class="nav-link" href="index.html#stability">Stability</a>
-    <a class="nav-link" href="index.html#drift">Drift</a>
-    <a class="nav-link" href="index.html#aiews">AIEWS</a>
+<header class="hero">
+  <div class="hero-kicker">
+    <span class="hero-kicker-dot"></span>
+    <span>AIEWS • PUBLIC EDITION</span>
   </div>
 
-  <div class="content">
-    <h1>AIEWS • AI Drift & Stability</h1>
-    <p>
-      Drift & Stability describes how AIEWS detects deviations, maintains stability and prevents
-      AI systems from evolving outside their ecosystem boundaries.  
-      The goal is to ensure predictability, safety and reproducibility.
-    </p>
+  <h1 class="hero-title">AIEWS • AI Drift & Stability</h1>
 
-    <h2>What is AI Drift?</h2>
-    <p>
-      AI Drift occurs when a system diverges from its original context, objectives or doctrine.
-      This can happen due to:
-    </p>
+  <p class="hero-subtitle">
+    Drift & Stability describes how AIEWS detects deviations, safeguards stability and prevents AI systems
+    from evolving outside their ecosystemic boundaries. Its purpose is to guarantee predictability, safety
+    and reproducibility.
+  </p>
+</header>
 
-    <ul>
-      <li>misinterpretation of data</li>
-      <li>accumulation of small deviations</li>
-      <li>incorrect feedback loops</li>
-      <li>unintentional human input</li>
-      <li>incorrect module connections</li>
-    </ul>
+<section class="section">
+  <div class="section-title">What is AI Drift?</div>
+  <p>
+    AI Drift occurs when a system deviates from its original context, objectives or doctrine.
+    This can happen due to:
+  </p>
+  <ul>
+    <li>misinterpretation of data</li>
+    <li>accumulation of small deviations</li>
+    <li>incorrect feedback loops</li>
+    <li>unconscious human input</li>
+    <li>incorrect coupling between modules</li>
+  </ul>
+</section>
 
-    <h2>How AIEWS Detects Drift</h2>
-    <p>
-      AIEWS uses context layers, validation points and ecosystem boundaries to detect deviations
-      immediately. It continuously compares:
-    </p>
+<section class="section">
+  <div class="section-title">How AIEWS Detects Drift</div>
+  <p>
+    AIEWS uses context layers, validation points and ecosystemic boundaries to immediately recognize deviations.
+    The system continuously compares:
+  </p>
+  <ul>
+    <li>current context vs. original context</li>
+    <li>objectives vs. output</li>
+    <li>module behavior vs. doctrine</li>
+    <li>human input vs. system reaction</li>
+  </ul>
+</section>
 
-    <ul>
-      <li>current context vs. original context</li>
-      <li>objectives vs. output</li>
-      <li>module behavior vs. doctrine</li>
-      <li>human input vs. system response</li>
-    </ul>
+<section class="section">
+  <div class="section-title">Stability Within MIKE‑CORE</div>
+  <p>
+    Stability means the ecosystem remains predictable, safe and reproducible.  
+    AIEWS monitors:
+  </p>
+  <ul>
+    <li>ecosystemic boundaries</li>
+    <li>module interactions</li>
+    <li>drift‑sensitive zones</li>
+    <li>audit trails</li>
+    <li>human intervention points</li>
+  </ul>
+</section>
 
-    <h2>Stability within MIKE‑CORE</h2>
-    <p>
-      Stability means the ecosystem remains predictable, safe and reproducible.
-      AIEWS monitors:
-    </p>
+<section class="section">
+  <div class="section-title">Why Drift & Stability Are Essential</div>
+  <p>
+    Without drift control, chaos emerges.  
+    Without stability, an IT ecosystem eventually collapses.  
+    AIEWS prevents both by continuously monitoring, correcting and protecting.
+  </p>
+</section>
 
-    <ul>
-      <li>ecosystem boundaries</li>
-      <li>module interactions</li>
-      <li>drift‑sensitive zones</li>
-      <li>audit trails</li>
-      <li>human intervention points</li>
-    </ul>
+<section class="section">
+  <div class="section-title">Upcoming Documents</div>
+  <ul>
+    <li>AIEWS • AI Drift & Stability (NL)</li>
+  </ul>
+</section>
 
-    <h2>Why Drift & Stability Matter</h2>
-    <p>
-      Without drift control, chaos emerges.  
-      Without stability, an IT ecosystem eventually collapses.  
-      AIEWS prevents both by continuously monitoring, correcting and protecting.
-    </p>
+<div class="footer-note">
+  © 2026 MIKE‑CORE / AIEWS — All Rights Reserved
+</div>
 
-    <h2>Next Documents</h2>
-    <ul>
-      <li>AIEWS • Additional AIEWS Modules (coming soon)</li>
-    </ul>
-  </div>
-
+</div>
+</div>
 </body>
 </html>
