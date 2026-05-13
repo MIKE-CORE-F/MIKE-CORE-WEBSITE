@@ -1,259 +1,397 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <title>MIKE-CORE • Public Edition</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<title>MIKE‑CORE • Public Knowledge Base</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    body {
-      margin: 0;
-      background: #050814;
-      color: #e5ecf7;
-      font-family: system-ui, sans-serif;
-      display: flex;
-    }
+<style>
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, #03050d 0%, #0a1224 100%);
+    color: #e5ecf7;
+    font-family: system-ui, sans-serif;
+    overflow-x: hidden;
+  }
 
-    .sidebar {
-      width: 300px;
-      background: rgba(10, 15, 30, 0.85);
-      backdrop-filter: blur(10px);
-      border-right: 1px solid rgba(58,169,255,0.25);
-      height: 100vh;
-      position: sticky;
-      top: 0;
-      padding: 20px;
-      overflow-y: auto;
-      text-align: center;
-    }
+  /* PARTICLE CANVAS */
+  #particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
 
-    .logo {
-      width: 260px;
-      margin: 0 auto 20px auto;
-      display: block;
-      padding: 20px;
-      background: radial-gradient(circle, rgba(58,169,255,0.25) 0%, rgba(5,8,20,0) 70%);
-      border-radius: 20px;
-      filter: drop-shadow(0 0 18px rgba(58,169,255,1));
-    }
+  /* ECOSYSTEM MONITOR */
+  .monitor {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background: rgba(0, 20, 40, 0.55);
+    border-bottom: 1px solid rgba(58,169,255,0.4);
+    color: #7fc7ff;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    text-shadow: 0 0 8px rgba(58,169,255,0.6);
+  }
 
-    .tagline {
-      font-size: 12px;
-      color: #9ccaff;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-shadow: 0 0 8px rgba(58,169,255,0.6);
-    }
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+  }
 
-    .nav-section-title {
-      font-size: 12px;
-      color: #7b8496;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-      text-align: left;
-    }
+  .logo {
+    width: 240px;
+    filter: drop-shadow(0 0 18px rgba(58,169,255,1));
+  }
 
-    .nav-link {
-      display: block;
-      padding: 8px 10px;
-      margin-bottom: 6px;
-      border-radius: 6px;
-      color: #9ccaff;
-      text-decoration: none;
-      font-size: 14px;
-      text-align: left;
-    }
+  h1 {
+    margin-top: 20px;
+    font-size: 28px;
+    color: #3aa9ff;
+    text-shadow: 0 0 12px rgba(58,169,255,0.5);
+  }
 
-    .nav-link:hover {
-      background: rgba(58,169,255,0.15);
-      color: #3aa9ff;
-    }
+  /* CATEGORY GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+  }
 
-    .content {
-      flex: 1;
-      padding: 40px;
-      max-width: 900px;
-    }
+  .category {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(58,169,255,0.25);
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  }
 
-    .search-box input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(58,169,255,0.3);
-      background: rgba(255,255,255,0.05);
-      color: #e5ecf7;
-      font-size: 16px;
-      margin-bottom: 30px;
-    }
+  .category:hover {
+    background: rgba(58,169,255,0.18);
+    transform: translateY(-5px);
+    box-shadow: 0 0 18px rgba(58,169,255,0.4);
+  }
 
-    h2 {
-      font-size: 13px;
-      color: #7b8496;
-      text-transform: uppercase;
-      margin-top: 35px;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
+  .category h2 {
+    font-size: 20px;
+    color: #b7d9ff;
+    margin: 0;
+  }
 
-    .item {
-      margin-bottom: 10px;
-      background: rgba(255,255,255,0.03);
-      padding: 14px 18px;
-      border-radius: 10px;
-      transition: all 0.2s ease;
-    }
+  /* MODAL */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(5,8,20,0.75);
+    backdrop-filter: blur(6px);
+    z-index: 10;
+    padding-top: 80px;
+  }
 
-    .item:hover {
-      background: rgba(58,169,255,0.08);
-      border: 1px solid rgba(58,169,255,0.3);
-      transform: translateX(4px);
-    }
+  .modal-content {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(58,169,255,0.3);
+    border-radius: 14px;
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(58,169,255,0.3);
 
-    a {
-      color: #9ccaff;
-      text-decoration: none;
-      font-size: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    max-height: 70vh;
+    overflow-y: auto;
 
-    .lang {
-      font-size: 10px;
-      background: rgba(58,169,255,0.15);
-      color: #3aa9ff;
-      padding: 2px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-  </style>
+    scrollbar-width: thin;
+    scrollbar-color: #3aa9ff rgba(255,255,255,0.05);
+  }
 
-  <script>
-    function searchDocs() {
-      let input = document.getElementById("search").value.toLowerCase();
-      let items = document.getElementsByClassName("item");
+  .modal-content h3 {
+    margin-top: 0;
+    color: #9ccaff;
+    text-align: center;
+  }
 
-      for (let i = 0; i < items.length; i++) {
-        let text = items[i].innerText.toLowerCase();
-        items[i].style.display = text.includes(input) ? "" : "none";
-      }
-    }
-  </script>
+  .modal-content a {
+    display: block;
+    padding: 10px;
+    margin-bottom: 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    color: #9ccaff;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+
+  .modal-content a:hover {
+    background: rgba(58,169,255,0.2);
+    color: #3aa9ff;
+  }
+
+  .close {
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    color: #ff8a8a;
+  }
+
+  /* ECOSYSTEM CORE FOOTER TEXT */
+  .core-footer {
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 2;
+    color: #7fc7ff;
+    text-shadow: 0 0 12px rgba(58,169,255,0.6);
+  }
+
+  .core-footer .core-line1 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #3aa9ff;
+    margin-bottom: 10px;
+  }
+
+  .core-footer .core-line2,
+  .core-footer .core-line3 {
+    font-size: 16px;
+    opacity: 0.85;
+    margin-bottom: 6px;
+  }
+
+  /* COPYRIGHT FOOTER */
+  .copyright-footer {
+    text-align: center;
+    padding: 10px 20px 40px 20px;
+    font-size: 13px;
+    color: #6faee8;
+    opacity: 0.85;
+    letter-spacing: 0.4px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 8px rgba(58,169,255,0.4);
+  }
+</style>
+
+<script>
+/* MODAL FUNCTIONS */
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+/* ECOSYSTEM MONITOR */
+const monitorMessages = [
+  "Ecosystem Status: Stable",
+  "Drift: Low",
+  "Audit Integrity: OK",
+  "Signal Noise: Minimal",
+  "Core Sync: Active",
+  "Subsystems: Nominal",
+  "Predictive Flow: Balanced",
+  "Reproducibility: Verified"
+];
+
+setInterval(() => {
+  const bar = document.getElementById("monitorText");
+  bar.textContent = monitorMessages[Math.floor(Math.random() * monitorMessages.length)];
+}, 2500);
+
+/* PARTICLES */
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  const count = 90;
+
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: (Math.random() - 0.5) * 0.4
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(58,169,255,0.8)";
+
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+
+      p.x += p.dx;
+      p.y += p.dy;
+
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+});
+</script>
 </head>
 
 <body>
 
-  <div class="sidebar">
-    <img class="logo" src="mikecore_logo.png" alt="MIKE-CORE Logo">
-    <div class="tagline">The Architect of a New IT Ecosystem</div>
+<!-- PARTICLE CANVAS -->
+<canvas id="particles"></canvas>
 
-    <div class="nav-section-title">Navigation</div>
-    <a class="nav-link" href="#ecosystem">Ecosystem</a>
-    <a class="nav-link" href="#domain">Domains</a>
-    <a class="nav-link" href="#modules">Modules</a>
-    <a class="nav-link" href="#flow">Flow</a>
-    <a class="nav-link" href="#stability">Stability</a>
-    <a class="nav-link" href="#drift">Drift</a>
-    <a class="nav-link" href="#aiews">AIEWS</a>
-    <a class="nav-link" href="#articles">Articles</a>
-    <a class="nav-link" href="#visuals">Visual Maps</a>
-    <a class="nav-link" href="#about">About MIKE‑CORE</a>
+<!-- ECOSYSTEM MONITOR -->
+<div class="monitor">
+  <span id="monitorText">Ecosystem Status: Stable</span>
+</div>
 
-    <div class="nav-section-title">Contact</div>
-    <a class="nav-link" href="contact.html">Contact (NL)</a>
-    <a class="nav-link" href="contact_en.html">Contact (EN)</a>
+<div class="header">
+  <img src="mikecore_logo.png" class="logo">
+  <h1>MIKE‑CORE • Public Knowledge Base</h1>
+</div>
+
+<!-- CATEGORY GRID -->
+<div class="grid">
+  <div class="category" onclick="openModal('ecosystem')"><h2>Ecosysteem</h2></div>
+  <div class="category" onclick="openModal('aiews')"><h2>AIEWS</h2></div>
+  <div class="category" onclick="openModal('visuals')"><h2>Visual Maps</h2></div>
+  <div class="category" onclick="openModal('articles')"><h2>Artikels</h2></div>
+  <div class="category" onclick="openModal('licenses')"><h2>Licenties</h2></div>
+  <div class="category" onclick="openModal('about')"><h2>About</h2></div>
+  <div class="category" onclick="openModal('contact')"><h2>Contact</h2></div>
+</div>
+
+<!-- MODALS (scrollable) -->
+<!-- ECOSYSTEM -->
+<div class="modal" id="ecosystem">
+  <div class="modal-content">
+    <h3>Ecosysteem</h3>
+    <a href="MIKE‑CORE_Public_Ecosystem_Guidev_1.0-DUTCH.html">Ecosystem Guide (NL)</a>
+    <a href="MIKE‑CORE_Public_Ecosystem_Guidev_1.0-EN.html">Ecosystem Guide (EN)</a>
+    <a href="MIKE-CORE_Public_DomainLayers_v1.0-DUTCH.html">Domain Layers (NL)</a>
+    <a href="MIKE-CORE_Public_DomainLayers_v1.0_EN.html">Domain Layers (EN)</a>
+    <a href="MIKE-CORE_Public_ModulesOverview_v1.0_DUTCH.html">Modules Overview (NL)</a>
+    <a href="MIKE-CORE_Public_ModulesOverview_v1.0_EN.html">Modules Overview (EN)</a>
+    <a href="MIKE-CORE_Public_FlowPrinciples_v1.0_DUTCH.html">Flow Principles (NL)</a>
+    <a href="MIKE-CORE_Public_FlowPrinciples_v1.0_EN.html">Flow Principles (EN)</a>
+    <a href="MIKE‑CORE_Public_StabilityFramework_v1.0_DUTCH.html">Stability Framework (NL)</a>
+    <a href="MIKE‑CORE_Public_StabilityFramework_v1.0_EN.html">Stability Framework (EN)</a>
+    <a href="MIKE‑CORE_Public_DriftControl_v1.0_DUTCH.html">Drift Control (NL)</a>
+    <a href="MIKE‑CORE_Public_DriftControl_v1.0_EN.html">Drift Control (EN)</a>
+    <div class="close" onclick="closeModal('ecosystem')">Sluiten</div>
   </div>
+</div>
 
-  <div class="content">
-
-    <div class="search-box">
-      <input id="search" type="text" placeholder="Search documents..." onkeyup="searchDocs()">
-    </div>
-
-    <!-- ECOSYSTEM -->
-    <h2 id="ecosystem">Ecosystem Guides</h2>
-    <div class="item"><a href="MIKE‑CORE_Public_Ecosystem_Guidev_1.0-DUTCH.html">Ecosystem Guide <span class="lang">NL</span></a></div>
-    <div class="item"><a href="MIKE‑CORE_Public_Ecosystem_Guidev_1.0-EN.html">Ecosystem Guide <span class="lang">EN</span></a></div>
-
-    <!-- DOMAIN LAYERS -->
-    <h2 id="domain">Domain Layers</h2>
-    <div class="item"><a href="MIKE-CORE_Public_DomainLayers_v1.0-DUTCH.html">Domain Layers <span class="lang">NL</span></a></div>
-    <div class="item"><a href="MIKE-CORE_Public_DomainLayers_v1.0_EN.html">Domain Layers <span class="lang">EN</span></a></div>
-
-    <!-- MODULES -->
-    <h2 id="modules">Modules Overview</h2>
-    <div class="item"><a href="MIKE-CORE_Public_ModulesOverview_v1.0_DUTCH.html">Modules Overview <span class="lang">NL</span></a></div>
-    <div class="item"><a href="MIKE-CORE_Public_ModulesOverview_v1.0_EN.html">Modules Overview <span class="lang">EN</span></a></div>
-
-    <!-- FLOW -->
-    <h2 id="flow">Flow Principles</h2>
-    <div class="item"><a href="MIKE-CORE_Public_FlowPrinciples_v1.0_DUTCH.html">Flow Principles <span class="lang">NL</span></a></div>
-    <div class="item"><a href="MIKE-CORE_Public_FlowPrinciples_v1.0_EN.html">Flow Principles <span class="lang">EN</span></a></div>
-
-    <!-- STABILITY -->
-    <h2 id="stability">Stability Framework</h2>
-    <div class="item"><a href="MIKE‑CORE_Public_StabilityFramework_v1.0_DUTCH.html">Stability Framework <span class="lang">NL</span></a></div>
-    <div class="item"><a href="MIKE‑CORE_Public_StabilityFramework_v1.0_EN.html">Stability Framework <span class="lang">EN</span></a></div>
-
-    <!-- DRIFT -->
-    <h2 id="drift">Drift Control</h2>
-    <div class="item"><a href="MIKE‑CORE_Public_DriftControl_v1.0_DUTCH.html">Drift Control <span class="lang">NL</span></a></div>
-    <div class="item"><a href="MIKE‑CORE_Public_DriftControl_v1.0_EN.html">Drift Control <span class="lang">EN</span></a></div>
-
-    <!-- AIEWS -->
-    <h2 id="aiews">AIEWS • Public Layer</h2>
-
-    <div class="item"><a href="AIEWS_Public_Overview_v1.0-DUTCH.html">AIEWS Public Overview <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_Public_Overview_v1.0-EN.html">AIEWS Public Overview <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="AIEWS_AI_Ecosystem_Mapping_v1.0-DUTCH.html">AI Ecosystem Mapping <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_AI_Ecosystem_Mapping_v1.0-EN.html">AI Ecosystem Mapping <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="AIEWS_AI_Drift_Stability_v1.0-DUTCH.html">AI Drift & Stability <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_AI_Drift_Stability_v1.0-EN.html">AI Drift & Stability <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="AIEWS_Public_AI_Safety_Framework_v1.0-DUTCH.html">AI Safety Framework <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_Public_AI_Safety_Framework_v1.0-EN.html">AI Safety Framework <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="AIEWS_Public_GovernanceModel_v1.0-DUTCH.html">Governance Model <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_Public_GovernanceModel_v1.0-EN.html">Governance Model <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="AIEWS_Public_Practical_UseCases_v1.0-DUTCH.html">Practical Use Cases <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_Public_Practical_UseCases_v1.0-EN.html">Practical Use Cases <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="AIEWS_Public_VisualMap_v1.0-DUTCH.html">Visual Map <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_Public_VisualMap_v1.0-EN.html">Visual Map <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="AIEWS_Public_WhatIsAIEWS_v1.0-DUTCH.html">What is AIEWS? <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_Public_WhatIsAIEWS_v1.0-EN.html">What is AIEWS? <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="AIEWS_Public_WhiteBox_AI_v1.0-DUTCH.html">WhiteBox AI <span class="lang">NL</span></a></div>
-    <div class="item"><a href="AIEWS_Public_WhiteBox_AI_v1.0-EN.html">WhiteBox AI <span class="lang">EN</span></a></div>
-
-    <!-- ARTICLES -->
-    <h2 id="articles">Articles</h2>
-    <div class="item"><a href="28_XMIKE_CORE_ARTICLE_28_LEAN_SIXSIGMA_AS_LOCAL_OPTIMIZATION_DUTCH.v1.0.html">Article 28 — Lean & Six Sigma <span class="lang">NL</span></a></div>
-    <div class="item"><a href="28_XMIKE_CORE_ARTICLE_28_LEAN_SIXSIGMA_AS_LOCAL_OPTIMIZATION_v1.0_EN.html">Article 28 — Lean & Six Sigma <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="29_XMIKE_CORE_ARTICLE_29_SCRUM_AS_RITUAL_NOT_STRUCTURE_v1.0_DUTCH.html">Article 29 — Scrum <span class="lang">NL</span></a></div>
-    <div class="item"><a href="29_XMIKE_CORE_ARTICLE_29_SCRUM_AS_RITUAL_NOT_STRUCTURE_v1.0_EN.html">Article 29 — Scrum <span class="lang">EN</span></a></div>
-
-    <!-- VISUAL MAPS -->
-    <h2 id="visuals">Visual Maps</h2>
-    <div class="item"><a href="triad_3layer_map_DUTCH.html">TRIAD 3‑Layer Map <span class="lang">NL</span></a></div>
-    <div class="item"><a href="triad_3layer_map_EN.html">TRIAD 3‑Layer Map <span class="lang">EN</span></a></div>
-
-    <div class="item"><a href="dodecad_12x12_matrix_DUTCH.html">DODECAD 12×12 Matrix <span class="lang">NL</span></a></div>
-    <div class="item"><a href="dodecad_12x12_matrix_EN.html">DODECAD 12×12 Matrix <span class="lang">EN</span></a></div>
-
-    <!-- ABOUT MIKE‑CORE -->
-    <h2 id="about">About MIKE‑CORE</h2>
-    <div class="item"><a href="OVER_MIKE_CORE_DUTCH.html">Over MIKE‑CORE <span class="lang">NL</span></a></div>
-    <div class="item"><a href="ABOUT_MIKE_CORE_EN.html">About MIKE‑CORE <span class="lang">EN</span></a></div>
-
+<!-- AIEWS -->
+<div class="modal" id="aiews">
+  <div class="modal-content">
+    <h3>AIEWS</h3>
+    <a href="AIEWS_Public_Overview_v1.0-DUTCH.html">Overview (NL)</a>
+    <a href="AIEWS_Public_Overview_v1.0-EN.html">Overview (EN)</a>
+    <a href="AIEWS_AI_Ecosystem_Mapping_v1.0-DUTCH.html">Ecosystem Mapping (NL)</a>
+    <a href="AIEWS_AI_Ecosystem_Mapping_v1.0-EN.html">Ecosystem Mapping (EN)</a>
+    <a href="AIEWS_AI_Drift_Stability_v1.0-DUTCH.html">Drift & Stability (NL)</a>
+    <a href="AIEWS_AI_Drift_Stability_v1.0-EN.html">Drift & Stability (EN)</a>
+    <a href="AIEWS_Public_AI_Safety_Framework_v1.0-DUTCH.html">AI Safety Framework (NL)</a>
+    <a href="AIEWS_Public_AI_Safety_Framework_v1.0-EN.html">AI Safety Framework (EN)</a>
+    <a href="AIEWS_Public_GovernanceModel_v1.0-DUTCH.html">Governance Model (NL)</a>
+    <a href="AIEWS_Public_GovernanceModel_v1.0-EN.html">Governance Model (EN)</a>
+    <a href="AIEWS_Public_Practical_UseCases_v1.0-DUTCH.html">Use Cases (NL)</a>
+    <a href="AIEWS_Public_Practical_UseCases_v1.0-EN.html">Use Cases (EN)</a>
+    <a href="AIEWS_Public_VisualMap_v1.0-DUTCH.html">Visual Map (NL)</a>
+    <a href="AIEWS_Public_VisualMap_v1.0-EN.html">Visual Map (EN)</a>
+    <a href="AIEWS_Public_WhatIsAIEWS_v1.0-DUTCH.html">What is AIEWS? (NL)</a>
+    <a href="AIEWS_Public_WhatIsAIEWS_v1.0-EN.html">What is AIEWS? (EN)</a>
+    <a href="AIEWS_Public_WhiteBox_AI_v1.0-DUTCH.html">WhiteBox AI (NL)</a>
+    <a href="AIEWS_Public_WhiteBox_AI_v1.0-EN.html">WhiteBox AI (EN)</a>
+    <div class="close" onclick="closeModal('aiews')">Sluiten</div>
   </div>
+</div>
 
-</body>
-</html>
+<!-- VISUAL MAPS -->
+<div class="modal" id="visuals">
+  <div class="modal-content">
+    <h3>Visual Maps</h3>
+    <a href="triad_3layer_map_DUTCH.html">TRIAD 3‑Layer Map (NL)</a>
+    <a href="triad_3layer_map_EN.html">TRIAD 3‑Layer Map (EN)</a>
+    <a href="dodecad_12x12_matrix_DUTCH.html">DODECAD 12×12 Matrix (NL)</a>
+    <a href="dodecad_12x12_matrix_EN.html">DODECAD 12×12 Matrix (EN)</a>
+    <div class="close" onclick="closeModal('visuals')">Sluiten</div>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<div class="modal" id="articles">
+  <div class="modal-content">
+    <h3>Artikels</h3>
+    <a href="28_XMIKE_CORE_ARTICLE_28_LEAN_SIXSIGMA_AS_LOCAL_OPTIMIZATION_DUTCH.v1.0.html">Article 28 (NL)</a>
+    <a href="28_XMIKE_CORE_ARTICLE_28_LEAN_SIXSIGMA_AS_LOCAL_OPTIMIZATION_v1.0_EN.html">Article 28 (EN)</a>
+    <a href="29_XMIKE_CORE_ARTICLE_29_SCRUM_AS_RITUAL_NOT_STRUCTURE_v1.0_DUTCH.html">Article 29 (NL)</a>
+    <a href="29_XMIKE_CORE_ARTICLE_29_SCRUM_AS_RITUAL_NOT_STRUCTURE_v1.0_EN.html">Article 29 (EN)</a>
+    <div class="close" onclick="closeModal('articles')">Sluiten</div>
+  </div>
+</div>
+
+<!-- LICENSES -->
+<div class="modal" id="licenses">
+  <div class="modal-content">
+    <h3>Licenties</h3>
+    <a href="MIKE-CORE_Public_License_Overview_v1.0_DUTCH.html">License Overview (NL)</a>
+    <a href="MIKE-CORE_Public_License_Overview_v1.0_EN.html">License Overview (EN)</a>
+    <div class="close" onclick="closeModal('licenses')">Sluiten</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="modal" id="about">
+  <div class="modal-content">
+    <h3>About</h3>
+    <a href="OVER_MIKE_CORE_DUTCH.html">Over MIKE‑CORE (NL)</a>
+    <a href="ABOUT_MIKE_CORE_EN.html">About MIKE‑CORE (EN)</a>
+    <div class="close" onclick="closeModal('about')">Sluiten</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="modal" id="contact">
+  <div class="modal-content">
+    <h3>Contact</h3>
+    <a href="contact.html">Contact (NL)</a>
+    <a href="contact_en.html">Contact (EN)</a>
+    <div class="close" onclick="closeModal('contact')">Sluiten</div>
+  </div>
+</div>
+
+<!-- ECOSYSTEM CORE FOOTER TEXT -->
+<div class="core-footer">
+  <div class="core-line1">Ecosystem Core</div>
+  <div class="core-line2">This is the architect of a new IT ecosystem.</div>
+  <div class="core-line3">This
