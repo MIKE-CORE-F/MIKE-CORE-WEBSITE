@@ -1,99 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>MIKE‑CORE™ Public License Overview v1.0 (EN)</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE™ Public License Overview v1.0 — EN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Official public license of the MIKE‑CORE ecosystem: conditions for accessing, sharing, and using public documents." />
+  <meta name="author" content="MIKE Verhelst" />
 
-<style>
-  body {
-    margin: 0;
-    background: #050a16;
-    color: #d8eaff;
-    font-family: system-ui, sans-serif;
-    padding: 30px;
-    line-height: 1.6;
-  }
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --accent-blue: #3aa9ff;
+      --accent-silver: #cfd8e3;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --shadow-soft: 0 0 40px rgba(0,0,0,0.6);
+      --font-main: system-ui, sans-serif;
+    }
 
-  h1, h2 {
-    color: #3aa9ff;
-    text-shadow: 0 0 10px rgba(58,169,255,0.6);
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+    }
 
-  .section {
-    margin-bottom: 35px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(58,169,255,0.25);
-  }
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
 
-  a {
-    color: #7fc7ff;
-  }
-</style>
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(58,169,255,0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(207,216,227,0.08), transparent 60%),
+                  rgba(5,8,20,0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58,169,255,0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      border-bottom: 1px solid rgba(58,169,255,0.35);
+      padding-bottom: 20px;
+      margin-bottom: 32px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58,169,255,0.18), rgba(207,216,227,0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin: 14px 0 4px;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 640px;
+    }
+
+    .section {
+      margin-top: 32px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11,16,32,0.96), rgba(5,8,20,0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent-silver);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: radial-gradient(circle at left, rgba(58,169,255,0.18), transparent 60%),
+                  rgba(8,12,26,0.96);
+      border: 1px solid rgba(58,169,255,0.45);
+      font-size: 13px;
+      color: var(--accent-silver);
+    }
+
+    a { color: #7fc7ff; }
+  </style>
 </head>
 
 <body>
+  <div class="page-wrap">
+    <div class="glass-panel">
 
-<h1>MIKE‑CORE™ Public License Overview v1.0</h1>
+      <header class="hero">
+        <div class="hero-kicker">MIKE‑CORE ECOSYSTEM • PUBLIC LICENSE</div>
+        <h1 class="hero-title">Public License Overview v1.0</h1>
+        <p class="hero-subtitle">
+          The official public license of the MIKE‑CORE ecosystem.  
+          This license defines how public documents may be accessed, shared, and used —  
+          fully aligned with ecosystemic stability, coherence, and reproducibility.
+        </p>
+      </header>
 
-<div class="section">
-  <h2>1. Purpose of this license</h2>
-  <p>
-    This license defines the conditions under which MIKE‑CORE™ public documents may be 
-    accessed, shared, and used.  
-    MIKE‑CORE™ is an IT‑Constitutional Ecosystem where reproducibility, audit integrity, 
-    and ecosystemic stability are foundational principles.
-  </p>
-</div>
+      <section class="section">
+        <div class="section-title">1. Purpose of this license</div>
+        <p>
+          This license defines the conditions under which MIKE‑CORE™ public documents are accessible.  
+          MIKE‑CORE™ is an IT‑Constitutional Ecosystem where reproducibility, audit integrity, and ecosystemic stability are foundational principles.
+        </p>
+      </section>
 
-<div class="section">
-  <h2>2. Permitted use</h2>
-  <p>
-    ✔ Reading public documents  
-    ✔ Sharing public documents in their original form  
-    ✔ Referencing MIKE‑CORE™ concepts  
-    ✔ Use for education, research, and knowledge dissemination  
-  </p>
-</div>
+      <section class="section">
+        <div class="section-title">2. Permitted use</div>
+        <p>✔ Reading public documents</p>
+        <p>✔ Sharing public documents in their original form</p>
+        <p>✔ Referencing MIKE‑CORE™ concepts</p>
+        <p>✔ Use for education, research, and knowledge dissemination</p>
+        <div class="callout">
+          Access is free.  
+          The structure remains protected.
+        </div>
+      </section>
 
-<div class="section">
-  <h2>3. Prohibited use</h2>
-  <p>
-    ✘ Modifying or republishing documents as your own  
-    ✘ Commercial use without written permission  
-    ✘ Copying or replicating ecosystem structures  
-    ✘ Reproducing TRIAD/HEXAD/AIEWS structures outside MIKE‑CORE™  
-    ✘ Breaking audit chains or reproducibility requirements  
-  </p>
-</div>
+      <section class="section">
+        <div class="section-title">3. Prohibited use</div>
+        <p>✘ Modifying or republishing documents as your own</p>
+        <p>✘ Commercial exploitation without written permission</p>
+        <p>✘ Copying or replicating ecosystem structures</p>
+        <p>✘ Reproducing TRIAD/HEXAD/AIEWS structures outside MIKE‑CORE™</p>
+        <p>✘ Breaking audit chains or reproducibility requirements</p>
+        <div class="callout">
+          Ecosystemic integrity is not optional — it is mandatory.
+        </div>
+      </section>
 
-<div class="section">
-  <h2>4. Legal protection</h2>
-  <p>
-    All MIKE‑CORE™ documents are legally protected and fall under ecosystemic integrity 
-    governance.  
-    MIKE‑CORE™, TRIAD™, HEXAD™ and AIEWS™ are protected concepts within the 
-    IT‑Constitutional Ecosystem.  
-    Reproducibility is mandatory for document validity.
-  </p>
-</div>
+      <section class="section">
+        <div class="section-title">4. Legal protection</div>
+        <p>
+          All MIKE‑CORE™ documents are legally protected and fall under ecosystemic integrity governance.  
+          MIKE‑CORE™, TRIAD™, HEXAD™ and AIEWS™ are protected concepts within the IT‑Constitutional Ecosystem.  
+          Reproducibility is mandatory for the validity of every document.
+        </p>
+      </section>
 
-<div class="section">
-  <h2>5. Disclaimer</h2>
-  <p>
-    Documents are provided “as‑is”.  
-    No liability is accepted for interpretation, implementation, or usage.  
-    Documents may evolve as part of ecosystemic development.
-  </p>
-</div>
+      <section class="section">
+        <div class="section-title">5. Disclaimer</div>
+        <p>
+          Documents are provided “as‑is”.  
+          No liability is accepted for interpretation, implementation, or usage.  
+          Documents may evolve as part of ecosystemic development.
+        </p>
+      </section>
 
-<div class="section">
-  <h2>6. Contact</h2>
-  <p>
-    For questions or permissions:  
-    <a href="contact_en.html">MIKE‑CORE™ Contact Page</a>
-  </p>
-</div>
+      <section class="section">
+        <div class="section-title">6. Contact</div>
+        <p>
+          For questions or permissions:<br>
+          <a href="contact_en.html">MIKE‑CORE™ Contact Page</a>
+        </p>
+      </section>
 
+    </div>
+  </div>
 </body>
 </html>
