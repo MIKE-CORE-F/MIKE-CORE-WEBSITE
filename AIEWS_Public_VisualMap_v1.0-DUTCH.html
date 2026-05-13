@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>AIEWS • Publieke Visuele Kaart (NL)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="MIKE Verhelst" />
+  <meta name="copyright" content="© 2026 MIKE‑CORE / AIEWS — All Rights Reserved" />
+
+  <style>
+    :root {
+      --bg-main:#050814;--bg-panel:#0b1020;--bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;--accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;--accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;--text-soft:#b5c0d4;--text-muted:#7b8496;
+      --border-soft:#1b2235;--shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;--radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);font-family:var(--font-main);line-height:1.6;
+    }
+
+    .page-wrap {max-width:1100px;margin:0 auto;padding:40px 16px 80px;}
+
+    .glass-panel {
+      background:radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+                 rgba(5,8,20,0.92);
+      border-radius:24px;border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);padding:32px 26px 40px;position:relative;overflow:hidden;
+    }
+
+    .glass-panel::before {
+      content:"";position:absolute;inset:-40%;
+      background:radial-gradient(circle at 10% 0%,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at 90% 100%,rgba(207,216,227,0.10),transparent 55%);
+      opacity:.7;pointer-events:none;z-index:-1;
+    }
+
+    header.hero {
+      text-align:left;margin-bottom:32px;
+      border-bottom:1px solid rgba(58,169,255,0.35);padding-bottom:20px;
+    }
+
+    .hero-kicker {
+      display:inline-flex;align-items:center;gap:8px;
+      padding:4px 14px;border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .hero-kicker-dot {
+      width:8px;height:8px;border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+
+    .hero-title {font-size:32px;margin:14px 0 4px;text-transform:uppercase;}
+    .hero-subtitle {font-size:16px;color:var(--text-soft);max-width:640px;}
+
+    .section {
+      margin-top:32px;padding:20px 18px 22px;border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size:18px;font-weight:600;letter-spacing:.06em;
+      text-transform:uppercase;color:var(--accent-silver);margin-bottom:10px;
+    }
+
+    p,ul,li {font-size:14px;color:var(--text-soft);}
+
+    .footer-note {
+      margin-top:26px;font-size:11px;color:var(--text-muted);text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+<div class="glass-panel">
+
+<header class="hero">
+  <div class="hero-kicker">
+    <span class="hero-kicker-dot"></span>
+    <span>AIEWS • PUBLIC EDITION</span>
+  </div>
+
+  <h1 class="hero-title">AIEWS • Publieke Visuele Kaart</h1>
+
+  <p class="hero-subtitle">
+    Een publieke, conceptuele kaart van hoe AIEWS zich binnen het MIKE‑CORE™ ecosysteem positioneert —  
+    met focus op governance, stabiliteit en reproduceerbaarheid, zonder interne kern of blueprint bloot te leggen.
+  </p>
+</header>
+
+<section class="section">
+  <div class="section-title">Overzicht van de publieke lagen</div>
+  <p>
+    De kaart hieronder toont enkel de <strong>publieke schil</strong> van het ecosysteem.  
+    Ze helpt lezers om te begrijpen waar AIEWS zich bevindt ten opzichte van TRIAD, HEXAD, Cockpit Framework en MIKE‑CORE Elite.
+  </p>
+
+  <div style="
+    margin-top:18px;
+    padding:20px;
+    border-radius:14px;
+    background:radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+               radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+               rgba(5,8,20,0.92);
+    border:1px solid rgba(58,169,255,0.25);
+    box-shadow:0 0 40px rgba(0,0,0,0.6);
+    font-family:Consolas, monospace;
+    font-size:13px;
+    color:#cfd8e3;
+    white-space:pre;
+    overflow-x:auto;
+  ">
+MIKE‑CORE™ Public Ecosysteem
+│
+├── TRIAD™ (Diagnose‑laag)
+│     • Publieke domeinen
+│     • Conceptuele diagnose
+│
+├── HEXAD™ (Ecosysteem‑laag)
+│     • Publieke structuur
+│     • Domeinindeling
+│
+├── AIEWS OS‑Core™ (AI Governance)
+│     • Publieke governance‑filosofie
+│     • White‑box AI principes
+│     • Drift‑preventie (conceptueel)
+│     • Reproduceerbaarheid (conceptueel)
+│
+├── Cockpit Framework™ (Telemetrie)
+│     • Publieke visualisatie
+│     • Status & workflow‑overzicht
+│
+└── MIKE‑CORE Elite™ (Filosofie & Principes)
+      • Publieke doctrine
+      • Stabiliteit & reproduceerbaarheid
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">Wat deze kaart wél en niet toont</div>
+  <p>
+    Deze visuele kaart is bewust beperkt tot de publieke laag. Ze toont:
+  </p>
+  <ul>
+    <li>de positie van AIEWS binnen het ecosysteem</li>
+    <li>de relatie met TRIAD, HEXAD, Cockpit en MIKE‑CORE Elite</li>
+    <li>de rol van AIEWS als AI‑governance‑laag</li>
+  </ul>
+  <p>Ze toont <strong>niet</strong>:</p>
+  <ul>
+    <li>kernel‑logica of interne runtime</li>
+    <li>blueprint‑architectuur of validatie‑ketens</li>
+    <li>interne domeinregels of module‑architectuur</li>
+  </ul>
+  <p>
+    De kaart is ontworpen als publieke referentie: geschikt voor lezingen, documentatie, onderwijs en audits —  
+    zonder toegang te geven tot de private kern van MIKE‑CORE of AIEWS.
+  </p>
+</section>
+
+<div class="footer-note">
+  © 2026 MIKE‑CORE / AIEWS — All Rights Reserved
+</div>
+
+</div>
+</div>
+</body>
+</html>
