@@ -14,7 +14,6 @@
     overflow-x: hidden;
   }
 
-  /* PARTICLE CANVAS */
   #particles {
     position: fixed;
     top: 0; left: 0;
@@ -23,7 +22,6 @@
     pointer-events: none;
   }
 
-  /* ECOSYSTEM MONITOR */
   .monitor {
     width: 100%;
     text-align: center;
@@ -40,7 +38,6 @@
     text-shadow: 0 0 8px rgba(58,169,255,0.6);
   }
 
-  /* HEADER */
   .header {
     text-align: center;
     padding: 40px 20px;
@@ -60,7 +57,6 @@
     text-shadow: 0 0 12px rgba(58,169,255,0.5);
   }
 
-  /* CATEGORY GRID */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -95,7 +91,6 @@
     margin: 0;
   }
 
-  /* MODAL */
   .modal {
     display: none;
     position: fixed;
@@ -116,12 +111,8 @@
     margin: auto;
     padding: 25px;
     box-shadow: 0 0 20px rgba(58,169,255,0.3);
-
     max-height: 70vh;
     overflow-y: auto;
-
-    scrollbar-width: thin;
-    scrollbar-color: #3aa9ff rgba(255,255,255,0.05);
   }
 
   .modal-content h3 {
@@ -153,7 +144,6 @@
     color: #ff8a8a;
   }
 
-  /* ECOSYSTEM CORE FOOTER TEXT */
   .core-footer {
     text-align: center;
     padding: 40px 20px 20px 20px;
@@ -178,7 +168,6 @@
     margin-bottom: 6px;
   }
 
-  /* COPYRIGHT FOOTER */
   .copyright-footer {
     text-align: center;
     padding: 10px 20px 40px 20px;
@@ -193,12 +182,8 @@
 </style>
 
 <script>
-function openModal(id) {
-  document.getElementById(id).style.display = "block";
-}
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-}
+function openModal(id) { document.getElementById(id).style.display = "block"; }
+function closeModal(id) { document.getElementById(id).style.display = "none"; }
 
 const monitorMessages = [
   "Ecosystem Status: Stable",
@@ -212,51 +197,9 @@ const monitorMessages = [
 ];
 
 setInterval(() => {
-  const bar = document.getElementById("monitorText");
-  bar.textContent = monitorMessages[Math.floor(Math.random() * monitorMessages.length)];
+  document.getElementById("monitorText").textContent =
+    monitorMessages[Math.floor(Math.random() * monitorMessages.length)];
 }, 2500);
-
-document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("particles");
-  const ctx = canvas.getContext("2d");
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const particles = [];
-  const count = 90;
-
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 2 + 1,
-      dx: (Math.random() - 0.5) * 0.4,
-      dy: (Math.random() - 0.5) * 0.4
-    });
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgba(58,169,255,0.8)";
-
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-
-      p.x += p.dx;
-      p.y += p.dy;
-
-      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-    });
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-});
 </script>
 </head>
 
@@ -283,96 +226,131 @@ document.addEventListener("DOMContentLoaded", () => {
   <div class="category" onclick="openModal('contact')"><h2>Contact</h2></div>
 </div>
 
-<!-- MODALS -->
+<!-- ECOSYSTEEM -->
 <div class="modal" id="ecosystem">
   <div class="modal-content">
     <h3>Ecosysteem</h3>
-    <a href="#">Ecosystem Guide (NL)</a>
-    <a href="#">Ecosystem Guide (EN)</a>
-    <a href="#">Domain Layers (NL)</a>
-    <a href="#">Domain Layers (EN)</a>
-    <a href="#">Modules Overview (NL)</a>
-    <a href="#">Modules Overview (EN)</a>
-    <a href="#">Flow Principles (NL)</a>
-    <a href="#">Flow Principles (EN)</a>
-    <a href="#">Stability Framework (NL)</a>
-    <a href="#">Stability Framework (EN)</a>
-    <a href="#">Drift Control (NL)</a>
-    <a href="#">Drift Control (EN)</a>
+
+    <a href="MIKE‑CORE_Public_Ecosystem_Guidev_1.0-DUTCH.html">Ecosystem Guide (NL)</a>
+    <a href="MIKE‑CORE_Public_Ecosystem_Guidev_1.0-EN.html">Ecosystem Guide (EN)</a>
+
+    <a href="MIKE-CORE_Public_DomainLayers_v1.0-DUTCH.html">Domain Layers (NL)</a>
+    <a href="MIKE-CORE_Public_DomainLayers_v1.0_EN.html">Domain Layers (EN)</a>
+
+    <a href="MIKE-CORE_Public_ModulesOverview_v1.0_DUTCH.html">Modules Overview (NL)</a>
+    <a href="MIKE-CORE_Public_ModulesOverview_v1.0_EN.html">Modules Overview (EN)</a>
+
+    <a href="MIKE-CORE_Public_FlowPrinciples_v1.0_DUTCH.html">Flow Principles (NL)</a>
+    <a href="MIKE-CORE_Public_FlowPrinciples_v1.0_EN.html">Flow Principles (EN)</a>
+
+    <a href="MIKE‑CORE_Public_StabilityFramework_v1.0_DUTCH.html">Stability Framework (NL)</a>
+    <a href="MIKE‑CORE_Public_StabilityFramework_v1.0_EN.html">Stability Framework (EN)</a>
+
+    <a href="MIKE‑CORE_Public_DriftControl_v1.0_DUTCH.html">Drift Control (NL)</a>
+    <a href="MIKE‑CORE_Public_DriftControl_v1.0_EN.html">Drift Control (EN)</a>
+
     <div class="close" onclick="closeModal('ecosystem')">Sluiten</div>
   </div>
 </div>
 
+<!-- AIEWS -->
 <div class="modal" id="aiews">
   <div class="modal-content">
     <h3>AIEWS</h3>
-    <a href="#">Overview (NL)</a>
-    <a href="#">Overview (EN)</a>
-    <a href="#">Ecosystem Mapping (NL)</a>
-    <a href="#">Ecosystem Mapping (EN)</a>
-    <a href="#">Drift & Stability (NL)</a>
-    <a href="#">Drift & Stability (EN)</a>
-    <a href="#">AI Safety Framework (NL)</a>
-    <a href="#">AI Safety Framework (EN)</a>
-    <a href="#">Governance Model (NL)</a>
-    <a href="#">Governance Model (EN)</a>
-    <a href="#">Use Cases (NL)</a>
-    <a href="#">Use Cases (EN)</a>
-    <a href="#">Visual Map (NL)</a>
-    <a href="#">Visual Map (EN)</a>
-    <a href="#">What is AIEWS? (NL)</a>
-    <a href="#">What is AIEWS? (EN)</a>
-    <a href="#">WhiteBox AI (NL)</a>
-    <a href="#">WhiteBox AI (EN)</a>
+
+    <a href="AIEWS_Public_Overview_v1.0-DUTCH.html">Overview (NL)</a>
+    <a href="AIEWS_Public_Overview_v1.0-EN.html">Overview (EN)</a>
+
+    <a href="AIEWS_AI_Ecosystem_Mapping_v1.0-DUTCH.html">Ecosystem Mapping (NL)</a>
+    <a href="AIEWS_AI_Ecosystem_Mapping_v1.0-EN.html">Ecosystem Mapping (EN)</a>
+
+    <a href="AIEWS_AI_Drift_Stability_v1.0-DUTCH.html">Drift & Stability (NL)</a>
+    <a href="AIEWS_AI_Drift_Stability_v1.0-EN.html">Drift & Stability (EN)</a>
+
+    <a href="AIEWS_Public_AI_Safety_Framework_v1.0-DUTCH.html">AI Safety Framework (NL)</a>
+    <a href="AIEWS_Public_AI_Safety_Framework_v1.0-EN.html">AI Safety Framework (EN)</a>
+
+    <a href="AIEWS_Public_GovernanceModel_v1.0-DUTCH.html">Governance Model (NL)</a>
+    <a href="AIEWS_Public_GovernanceModel_v1.0-EN.html">Governance Model (EN)</a>
+
+    <a href="AIEWS_Public_Practical_UseCases_v1.0-DUTCH.html">Use Cases (NL)</a>
+    <a href="AIEWS_Public_Practical_UseCases_v1.0-EN.html">Use Cases (EN)</a>
+
+    <a href="AIEWS_Public_VisualMap_v1.0-DUTCH.html">Visual Map (NL)</a>
+    <a href="AIEWS_Public_VisualMap_v1.0-EN.html">Visual Map (EN)</a>
+
+    <a href="AIEWS_Public_WhatIsAIEWS_v1.0-DUTCH.html">What is AIEWS? (NL)</a>
+    <a href="AIEWS_Public_WhatIsAIEWS_v1.0-EN.html">What is AIEWS? (EN)</a>
+
+    <a href="AIEWS_Public_WhiteBox_AI_v1.0-DUTCH.html">WhiteBox AI (NL)</a>
+    <a href="AIEWS_Public_WhiteBox_AI_v1.0-EN.html">WhiteBox AI (EN)</a>
+
     <div class="close" onclick="closeModal('aiews')">Sluiten</div>
   </div>
 </div>
 
+<!-- VISUAL MAPS -->
 <div class="modal" id="visuals">
   <div class="modal-content">
     <h3>Visual Maps</h3>
-    <a href="#">TRIAD 3‑Layer Map (NL)</a>
-    <a href="#">TRIAD 3‑Layer Map (EN)</a>
-    <a href="#">DODECAD 12×12 Matrix (NL)</a>
-    <a href="#">DODECAD 12×12 Matrix (EN)</a>
+
+    <a href="triad_3layer_map_DUTCH.html">TRIAD 3‑Layer Map (NL)</a>
+    <a href="triad_3layer_map_EN.html">TRIAD 3‑Layer Map (EN)</a>
+
+    <a href="dodecad_12x12_matrix_DUTCH.html">DODECAD 12×12 Matrix (NL)</a>
+    <a href="dodecad_12x12_matrix_EN.html">DODECAD 12×12 Matrix (EN)</a>
+
     <div class="close" onclick="closeModal('visuals')">Sluiten</div>
   </div>
 </div>
 
+<!-- ARTICLES -->
 <div class="modal" id="articles">
   <div class="modal-content">
     <h3>Artikels</h3>
-    <a href="#">Article 28 (NL)</a>
-    <a href="#">Article 28 (EN)</a>
-    <a href="#">Article 29 (NL)</a>
-    <a href="#">Article 29 (EN)</a>
+
+    <a href="28_XMIKE_CORE_ARTICLE_28_LEAN_SIXSIGMA_AS_LOCAL_OPTIMIZATION_DUTCH.v1.0.html">Article 28 (NL)</a>
+    <a href="28_XMIKE_CORE_ARTICLE_28_LEAN_SIXSIGMA_AS_LOCAL_OPTIMIZATION_v1.0_EN.html">Article 28 (EN)</a>
+
+    <a href="29_XMIKE_CORE_ARTICLE_29_SCRUM_AS_RITUAL_NOT_STRUCTURE_v1.0_DUTCH.html">Article 29 (NL)</a>
+    <a href="29_XMIKE_CORE_ARTICLE_29_SCRUM_AS_RITUAL_NOT_STRUCTURE_v1.0_EN.html">Article 29 (EN)</a>
+
     <div class="close" onclick="closeModal('articles')">Sluiten</div>
   </div>
 </div>
 
+<!-- LICENSES -->
 <div class="modal" id="licenses">
   <div class="modal-content">
     <h3>Licenties</h3>
-    <a href="#">License Overview (NL)</a>
-    <a href="#">License Overview (EN)</a>
+
+    <a href="MIKE-CORE_Public_License_Overview_v1.0_DUTCH.html">License Overview (NL)</a>
+    <a href="MIKE-CORE_Public_License_Overview_v1.0_EN.html">License Overview (EN)</a>
+
     <div class="close" onclick="closeModal('licenses')">Sluiten</div>
   </div>
 </div>
 
+<!-- ABOUT -->
 <div class="modal" id="about">
   <div class="modal-content">
     <h3>About</h3>
-    <a href="#">Over MIKE‑CORE (NL)</a>
-    <a href="#">About MIKE‑CORE (EN)</a>
+
+    <a href="OVER_MIKE_CORE_DUTCH.html">Over MIKE‑CORE (NL)</a>
+    <a href="ABOUT_MIKE_CORE_EN.html">About MIKE‑CORE (EN)</a>
+
     <div class="close" onclick="closeModal('about')">Sluiten</div>
   </div>
 </div>
 
+<!-- CONTACT -->
 <div class="modal" id="contact">
   <div class="modal-content">
     <h3>Contact</h3>
-    <a href="#">Contact (NL)</a>
-    <a href="#">Contact (EN)</a>
+
+    <a href="contact.html">Contact (NL)</a>
+    <a href="contact_en.html">Contact (EN)</a>
+
     <div class="close" onclick="closeModal('contact')">Sluiten</div>
   </div>
 </div>
