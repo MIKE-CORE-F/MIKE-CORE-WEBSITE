@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE‑F Training & Inclusie — Public Edition v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "Cascadia Code", "Fira Code", monospace;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+                  rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      text-align: left;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 10px rgba(58, 169, 255, 0.9);
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin: 14px 0 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 640px;
+    }
+
+    .section {
+      margin-top: 32px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      color: var(--accent-blue);
+      margin: 14px 0 6px;
+    }
+
+    p, ul {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    ul {
+      margin-left: 18px;
+    }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE‑CORE‑F • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">Training & Inclusie</h1>
+        <p class="hero-subtitle">
+          Een sociaal‑technisch ecosysteem dat stabiliteit bouwt voor jongeren, professionals en kwetsbare groepen.
+        </p>
+      </header>
+
+      <section class="section">
+        <div class="section-title">Waarom deze pagina bestaat</div>
+        <p>
+          MIKE‑CORE‑F is meer dan een IT‑ecosysteem. Het is een structuur die mensen beschermt, stabiliteit creëert en kansen opent
+          voor iedereen — ongeacht diploma, achtergrond of startpositie.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-title">1. Opleidingspaden voor jongeren zonder diploma</div>
+        <p>
+          Jongeren vallen vaak uit door abstracte theorie en gebrek aan structuur. MIKE‑CORE‑F biedt reproduceerbare stappen,
+          ecosystemische begeleiding en een veilige leeromgeving.
+        </p>
+        <ul>
+          <li>duidelijke diagnose‑structuren</li>
+          <li>stap‑voor‑stap stabiliteitsopbouw</li>
+          <li>ecosystemische begeleiding</li>
+          <li>groei zonder diploma‑drempels</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-title">2. Voor professionals die vastlopen</div>
+        <p>
+          Een diploma garandeert geen stabiliteit. MIKE‑CORE‑F helpt professionals die ruis, druk of inconsistentie ervaren.
+        </p>
+        <ul>
+          <li>herstel van stabiliteit</li>
+          <li>drift‑herkenning</li>
+          <li>ecosystemische analyse</li>
+          <li>audit‑proof workflows</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-title">3. Inclusie voor kwetsbare groepen</div>
+        <p>
+          MIKE‑CORE‑F beschermt mensen die door klassieke systemen worden afgeschreven. Stabiliteit is de basis waarop iedereen
+          kan groeien.
+        </p>
+        <ul>
+          <li>begeleiding zonder drempels</li>
+          <li>ecosystemische veiligheid</li>
+          <li>reproduceerbare stappen</li>
+          <li>groei voor iedereen</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Anti‑Wegwerp Cultuur</div>
+        <p>
+          MIKE‑CORE‑F bestrijdt wegwerp‑cultuur op drie niveaus: mensen, hardware en kennis.
+        </p>
+        <ul>
+          <li><strong>Mensen:</strong> niemand wordt afgeschreven door fouten of achtergrond.</li>
+          <li><strong>Hardware:</strong> diagnose, herstel en hergebruik.</li>
+          <li><strong>Kennis:</strong> niets verdwijnt — alles wordt reproduceerbaar.</li>
+        </ul>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE‑F Ecosystem — Public Layer v1.0
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
