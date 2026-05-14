@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE Fundamentals — Public Edition v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "Cascadia Code", "Fira Code", monospace;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+        rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      text-align: left;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 10px rgba(58, 169, 255, 0.9);
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin: 14px 0 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 720px;
+    }
+
+    .hero-meta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .section {
+      margin-top: 32px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+      margin-bottom: 10px;
+    }
+
+    p, ul {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    ul {
+      margin-left: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(58, 169, 255, 0.12), transparent 60%),
+                  rgba(8, 12, 26, 0.96);
+      border-radius: 14px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      padding: 14px 14px 16px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(58, 169, 255, 0.35);
+      font-size: 11px;
+      color: var(--accent-silver);
+      background: rgba(5, 10, 24, 0.9);
+    }
+
+    .timeline {
+      margin-top: 10px;
+      border-left: 1px solid rgba(58, 169, 255, 0.4);
+      padding-left: 14px;
+    }
+
+    .timeline-step {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 8px rgba(58, 169, 255, 0.8);
+    }
+
+    .timeline-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+    }
+
+    .timeline-title {
+      font-size: 14px;
+      color: var(--accent-blue);
+    }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE‑CORE • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">Fundamentals</h1>
+        <p class="hero-subtitle">
+          An accessible entry layer for anyone who wants to understand what MIKE‑CORE is — without technical background,
+          but with full respect for the ecosystemic depth underneath.
+        </p>
+        <div class="hero-meta">
+          This page describes the public core principles of MIKE‑CORE. Core structures, internal validation chains and
+          domain architectures remain intentionally protected.
+        </div>
+      </header>
+
+      <!-- Why these fundamentals exist -->
+      <section class="section">
+        <div class="section-title">Why these fundamentals exist</div>
+        <p>
+          MIKE‑CORE is not a tool, but an ecosystem. For many people, IT is a source of chaos, pressure and confusion.
+          The fundamentals layer makes the key ideas of MIKE‑CORE understandable: stability, simplicity, reproducibility
+          and ecosystemic thinking.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Purpose</div>
+            <div class="card-title">Making IT understandable</div>
+            <p>
+              Not everyone needs to be an architect, but everyone deserves a framework that explains what is happening
+              and why systems behave the way they do.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Focus</div>
+            <div class="card-title">Stability over speed</div>
+            <p>
+              MIKE‑CORE deliberately prioritises stability, reproducibility and clarity — instead of blindly optimising
+              for speed or short‑term gains.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Application</div>
+            <div class="card-title">From classroom to datacenter</div>
+            <p>
+              The same principles can be used in education, coaching, small organisations and complex IT environments.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- What is MIKE-CORE? -->
+      <section class="section">
+        <div class="section-title">What is MIKE‑CORE?</div>
+        <p>
+          MIKE‑CORE is an ecosystemic IT framework built on layers, principles and reproducible structures. It is designed
+          to reduce chaos, make drift visible and build stable environments where people, processes and hardware do not
+          break each other.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Ecosystem</div>
+            <div class="card-title">More than a system</div>
+            <p>
+              An ecosystem looks at the full context: people, processes, hardware, knowledge, pressure, expectations and environment.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Structure</div>
+            <div class="card-title">Modular building blocks</div>
+            <p>
+              Everything is built in clear modules and layers. No invisible magic, but explicit choices and patterns.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Language</div>
+            <div class="card-title">A shared vocabulary</div>
+            <p>
+              Concepts such as stability, drift, ecosystemic pressure and reproducibility give people a language to name
+              problems honestly.
+            </p>
+          </div>
+        </div>
+
+        <div class="pill-row">
+          <div class="pill">Ecosystem instead of loose tools</div>
+          <div class="pill">Stability as core value</div>
+          <div class="pill">Reproducible steps</div>
+          <div class="pill">No black boxes</div>
+          <div class="pill">People & technology together</div>
+        </div>
+      </section>
+
+      <!-- The 5 core principles -->
+      <section class="section">
+        <div class="section-title">The 5 core principles</div>
+        <p>
+          The fundamentals of MIKE‑CORE are summarised in five core principles. They form the basis for all further layers,
+          trainings and ecosystemic applications.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Principle 1</div>
+            <div class="card-title">Simplicity</div>
+            <p>
+              No unnecessary complexity. What is not needed, is not added. Simplicity is not a limitation, but a protection
+              against chaos.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Principle 2</div>
+            <div class="card-title">Stability</div>
+            <p>
+              A system is only useful when it is stable. Stability means: reproducible, explainable and defensible — even under pressure.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Principle 3</div>
+            <div class="card-title">Transparency</div>
+            <p>
+              No black boxes. People must be able to understand what is happening, which choices were made and where the limits are.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Principle 4</div>
+            <div class="card-title">Modularity</div>
+            <p>
+              Everything is built in blocks that can be combined, replaced or extended without breaking the entire ecosystem.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Principle 5</div>
+            <div class="card-title">Inclusion</div>
+            <p>
+              Everyone must be able to participate: youth, professionals, vulnerable groups. The language and structure are
+              designed to be accessible.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Who is MIKE-CORE for? -->
+      <section class="section">
+        <div class="section-title">Who is MIKE‑CORE for?</div>
+        <p>
+          MIKE‑CORE is intentionally designed as a socio‑technical ecosystem. It is not only aimed at experts, but at anyone
+          who needs stability in a digital world.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Youth</div>
+            <div class="card-title">Entry without diploma pressure</div>
+            <p>
+              Young people can learn how IT ecosystems work through MIKE‑CORE, without having to master all theory first.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Professionals</div>
+            <div class="card-title">Grip on complex environments</div>
+            <p>
+              People in IT roles get a framework to recognise and name noise, drift and instability.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Organisations</div>
+            <div class="card-title">Working more stably</div>
+            <p>
+              Organisations can use MIKE‑CORE as a reference to redesign processes, responsibilities and systems.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Vulnerable groups</div>
+            <div class="card-title">Access to structure</div>
+            <p>
+              People who fall through classic systems get a stable framework that protects them from chaos and throw‑away thinking.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How to start -->
+      <section class="section">
+        <div class="section-title">How to start with MIKE‑CORE?</div>
+        <p>
+          The fundamentals layer is meant as a starting point. You do not need to understand everything at once.
+          MIKE‑CORE grows with the person, the team or the organisation.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-label">Step 1 — Understanding</div>
+            <div class="timeline-title">Learn the basic principles</div>
+            <p>
+              Read the fundamentals, explore the visual maps and review the public ecosystem guides.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Step 2 — Language</div>
+            <div class="timeline-title">Build a shared vocabulary</div>
+            <p>
+              Use concepts such as stability, drift and ecosystemic pressure in conversations about IT and workload.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Step 3 — Application</div>
+            <div class="timeline-title">Take small, concrete steps</div>
+            <p>
+              Apply one principle in a small context: a class, a team, a project or a workplace.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Step 4 — Growth</div>
+            <div class="timeline-title">Scale what works</div>
+            <p>
+              What works is documented and repeated. In this way, MIKE‑CORE grows with the ecosystem without losing its core.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE Ecosystem — Public Layer v1.0<br>
+        This page only describes the public fundamentals. Core, domains and internal blueprints remain protected.
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
