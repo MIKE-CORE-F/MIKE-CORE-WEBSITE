@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MIKE‑CORE‑F Training & Inclusion — Public Edition v1.0</title>
+  <title>MIKE‑CORE‑F Training & Inclusion — Public Edition v1.5</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -41,9 +41,10 @@
     }
 
     .glass-panel {
-      background: radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
-                  rgba(5, 8, 20, 0.92);
+      background:
+        radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+        rgba(5, 8, 20, 0.92);
       border-radius: 24px;
       border: 1px solid rgba(58, 169, 255, 0.25);
       box-shadow: var(--shadow-soft);
@@ -90,7 +91,13 @@
     .hero-subtitle {
       font-size: 16px;
       color: var(--text-soft);
-      max-width: 640px;
+      max-width: 680px;
+    }
+
+    .hero-meta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
     }
 
     .section {
@@ -125,6 +132,102 @@
       margin-left: 18px;
     }
 
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(58, 169, 255, 0.12), transparent 60%),
+                  rgba(8, 12, 26, 0.96);
+      border-radius: 14px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      padding: 14px 14px 16px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(58, 169, 255, 0.35);
+      font-size: 11px;
+      color: var(--accent-silver);
+      background: rgba(5, 10, 24, 0.9);
+    }
+
+    .timeline {
+      margin-top: 10px;
+      border-left: 1px solid rgba(58, 169, 255, 0.4);
+      padding-left: 14px;
+    }
+
+    .timeline-step {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 8px rgba(58, 169, 255, 0.8);
+    }
+
+    .timeline-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+    }
+
+    .timeline-title {
+      font-size: 14px;
+      color: var(--accent-blue);
+    }
+
+    .cta-box {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px dashed rgba(58, 169, 255, 0.5);
+      background: rgba(5, 10, 24, 0.9);
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
     .footer-note {
       margin-top: 26px;
       font-size: 11px;
@@ -145,74 +248,300 @@
         </div>
         <h1 class="hero-title">Training & Inclusion</h1>
         <p class="hero-subtitle">
-          A socio‑technical ecosystem designed to build stability for youth, professionals and vulnerable groups.
+          A socio‑technical ecosystem that builds stability for young people, professionals and vulnerable groups —
+          with an explicit stand against throw‑away culture in people, hardware and knowledge.
         </p>
+        <div class="hero-meta">
+          This page describes the public mission of MIKE‑CORE‑F: how training, inclusion and anti‑waste thinking form a
+          social‑technical layer on top of the technical frameworks.
+        </div>
       </header>
 
+      <!-- Why this page exists -->
       <section class="section">
         <div class="section-title">Why this page exists</div>
         <p>
-          MIKE‑CORE‑F is more than an IT ecosystem. It is a structure that protects people, creates stability and opens
-          opportunities for everyone — regardless of diploma, background or starting position.
+          MIKE‑CORE‑F is more than an IT ecosystem. It is a structure designed to protect people, create stability and open
+          opportunities for everyone — regardless of diploma, background or starting position. This page makes visible how
+          training, inclusion and anti‑waste culture form a coherent socio‑technical layer.
         </p>
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Focus</div>
+            <div class="card-title">People first, systems second</div>
+            <p>
+              The human being is central, not the tool. MIKE‑CORE‑F uses structure to protect people from chaos, pressure and
+              unnecessary failure experiences.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Goal</div>
+            <div class="card-title">Stability as a basic right</div>
+            <p>
+              Everyone deserves a stable environment to learn, work and grow — including those who fall through classic systems.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Method</div>
+            <div class="card-title">Ecosystemic thinking</div>
+            <p>
+              Problems are not viewed in isolation, but in full context: person, process, hardware, knowledge and environment.
+            </p>
+          </div>
+        </div>
       </section>
 
+      <!-- Anti-throw-away culture -->
       <section class="section">
-        <div class="section-title">1. Training pathways for youth without a diploma</div>
+        <div class="section-title">Anti‑Throw‑Away Culture</div>
         <p>
-          Many young people drop out because traditional education relies on abstract theory. MIKE‑CORE‑F provides
-          reproducible steps, ecosystemic guidance and a safe learning environment.
+          MIKE‑CORE‑F actively resists throw‑away thinking on three levels: people, hardware and knowledge. Throwing away is
+          always a symptom of a deeper system problem. This ecosystem looks for that cause, makes it visible and builds an alternative.
         </p>
-        <ul>
-          <li>clear diagnostic structures</li>
-          <li>step‑by‑step stability building</li>
-          <li>ecosystemic guidance</li>
-          <li>growth without diploma barriers</li>
-        </ul>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">People</div>
+            <div class="card-title">No one is “discarded”</div>
+            <p>
+              People are not defined by mistakes, diagnoses or diplomas. Stability, structure and guidance make growth possible again.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Hardware</div>
+            <div class="card-title">Repair before replacement</div>
+            <p>
+              Equipment is not replaced by default. Diagnosis, repair and reuse are standard. This reduces cost and protects the environment.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Knowledge</div>
+            <div class="card-title">Nothing should be lost</div>
+            <p>
+              Experience, mistakes and solutions are captured in reproducible structures. No “tribal knowledge”, but an audit‑solid ecosystem.
+            </p>
+          </div>
+        </div>
+
+        <div class="pill-row">
+          <div class="pill">No person disposable</div>
+          <div class="pill">No hardware disposable</div>
+          <div class="pill">No knowledge disposable</div>
+          <div class="pill">Reproducible steps</div>
+          <div class="pill">Audit‑solid thinking</div>
+        </div>
       </section>
 
+      <!-- Young people without diploma -->
+      <section class="section">
+        <div class="section-title">1. Training paths for young people without a diploma</div>
+        <p>
+          Young people often drop out due to abstract theory, unclear expectations and a lack of structure. MIKE‑CORE‑F offers
+          reproducible steps, ecosystemic guidance and a safe learning environment where mistakes are not an endpoint, but a
+          signal in the system.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Structure</div>
+            <div class="card-title">Clear diagnostic structures</div>
+            <p>
+              Instead of “you can’t do it”, the young person gets a clear picture: where does it break, which step is missing,
+              what context is needed?
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Guidance</div>
+            <div class="card-title">Step‑by‑step stability building</div>
+            <p>
+              Small, achievable steps rebuild confidence. Each step is reproducible and can be reused later.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Context</div>
+            <div class="card-title">Ecosystemic guidance</div>
+            <p>
+              Not only the young person is considered, but also the environment: home, school, work, digital access, hardware, support network.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Access</div>
+            <div class="card-title">Growth without diploma barriers</div>
+            <p>
+              Talent is not measured in papers, but in stability, effort and learning capacity. MIKE‑CORE‑F opens alternative paths.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professionals -->
       <section class="section">
         <div class="section-title">2. For professionals who are stuck</div>
         <p>
-          A diploma does not guarantee stability. MIKE‑CORE‑F supports professionals who experience noise, pressure or
-          inconsistency.
+          A diploma does not guarantee stability. Many professionals face noise, pressure, conflicting expectations and systems
+          that were never designed to protect them. MIKE‑CORE‑F offers an ecosystemic lens to regain control.
         </p>
-        <ul>
-          <li>restoring stability</li>
-          <li>drift detection</li>
-          <li>ecosystemic analysis</li>
-          <li>audit‑proof workflows</li>
-        </ul>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Recovery</div>
+            <div class="card-title">Restoring stability</div>
+            <p>
+              By redesigning processes, responsibilities and expectations, space is created again to work in a healthy way.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Awareness</div>
+            <div class="card-title">Drift recognition</div>
+            <p>
+              Professionals learn to recognise when systems drift away from their purpose: too much pressure, too little structure, too much noise.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Analysis</div>
+            <div class="card-title">Ecosystemic analysis</div>
+            <p>
+              Problems are not pinned on individuals, but mapped as system failures. That makes solutions fairer and more sustainable.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Workform</div>
+            <div class="card-title">Audit‑solid workflows</div>
+            <p>
+              Work processes are designed to be reproducible, explainable and defensible — even under pressure.
+            </p>
+          </div>
+        </div>
       </section>
 
+      <!-- Vulnerable groups -->
       <section class="section">
         <div class="section-title">3. Inclusion for vulnerable groups</div>
         <p>
-          MIKE‑CORE‑F protects people who are written off by traditional systems. Stability is the foundation on which
-          everyone can grow.
+          MIKE‑CORE‑F protects people who are written off by classic systems: people with a diagnosis, gaps in their CV, financial
+          problems, language barriers or a history of “failure”. Stability is the foundation on which everyone can grow.
         </p>
-        <ul>
-          <li>low‑threshold support</li>
-          <li>ecosystemic safety</li>
-          <li>reproducible steps</li>
-          <li>growth for everyone</li>
-        </ul>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Access</div>
+            <div class="card-title">Low‑threshold guidance</div>
+            <p>
+              No requirement of a perfect background. The question is: what is needed to build stability, here and now?
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Safety</div>
+            <div class="card-title">Ecosystemic safety</div>
+            <p>
+              People are not only “helped”, but protected against systems that might break them again.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Repeatability</div>
+            <div class="card-title">Reproducible steps</div>
+            <p>
+              What works is captured. So it can work again — for the same person or for someone else.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Growth</div>
+            <div class="card-title">Growth for everyone</div>
+            <p>
+              Inclusion does not mean “being allowed to be present”, but being able to grow in a way that fits the person and the ecosystem.
+            </p>
+          </div>
+        </div>
       </section>
 
+      <!-- Possible formats -->
       <section class="section">
-        <div class="section-title">Anti‑Waste Culture</div>
+        <div class="section-title">Possible formats & collaborations</div>
         <p>
-          MIKE‑CORE‑F combats waste culture on three levels: people, hardware and knowledge.
+          MIKE‑CORE‑F Training & Inclusion is not a classic training catalogue. It is an ecosystem that can collaborate in different
+          forms with schools, organisations, companies and local initiatives.
         </p>
-        <ul>
-          <li><strong>People:</strong> no one is discarded because of mistakes or background.</li>
-          <li><strong>Hardware:</strong> diagnosis, repair and reuse.</li>
-          <li><strong>Knowledge:</strong> nothing disappears — everything becomes reproducible.</li>
-        </ul>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Introduction</div>
+            <div class="card-title">Awareness sessions</div>
+            <p>
+              Short sessions on throw‑away culture, ecosystemic thinking and stability — for young people, teams or organisations.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Training</div>
+            <div class="card-title">Practical tracks</div>
+            <p>
+              Hands‑on tracks around hardware reuse, digital basic skills, ecosystemic thinking and stability in IT environments.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Projects</div>
+            <div class="card-title">Inclusion & anti‑waste projects</div>
+            <p>
+              Collaborations with schools, social organisations or local initiatives around hardware rescue, training and guidance.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Pilots</div>
+            <div class="card-title">Small ecosystemic pilots</div>
+            <p>
+              Limited pilots to test MIKE‑CORE‑F in a real context: a class, a team, an organisation or a neighbourhood.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          Organisations, schools or initiatives that want to explore what is possible can request an exploratory conversation via
+          the public contact channels. Every collaboration starts from stability, reproducibility and respect for vulnerable groups.
+        </div>
+      </section>
+
+      <!-- Roadmap -->
+      <section class="section">
+        <div class="section-title">Ecosystemic roadmap</div>
+        <p>
+          Training & Inclusion within MIKE‑CORE‑F does not follow a linear track, but a reproducible cycle. Each step can start small
+          and be scaled later.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-label">Step 1 — Awareness</div>
+            <div class="timeline-title">Making throw‑away culture visible</div>
+            <p>
+              People, hardware and knowledge are no longer seen as consumables, but as ecosystem elements.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Step 2 — Training</div>
+            <div class="timeline-title">Providing structure and language</div>
+            <p>
+              The basic concepts of stability, drift, ecosystemic thinking and reproducibility are introduced.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Step 3 — Inclusion project</div>
+            <div class="timeline-title">Concrete application</div>
+            <p>
+              A small, feasible project in which young people, professionals or vulnerable groups are actively involved.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Step 4 — Ecosystemic growth</div>
+            <div class="timeline-title">Scaling what works</div>
+            <p>
+              What works is captured, repeated and expanded to other contexts — without losing the core.
+            </p>
+          </div>
+        </div>
       </section>
 
       <div class="footer-note">
-        © 2026 MIKE‑CORE‑F Ecosystem — Public Layer v1.0
+        © 2026 MIKE‑CORE‑F Ecosystem — Public Layer v1.5  
+        <br>This page describes the public layer only. Core structures, blueprints and internal validation chains remain protected.
       </div>
 
     </div>
