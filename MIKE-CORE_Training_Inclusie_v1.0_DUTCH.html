@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <title>MIKE‑CORE‑F Training & Inclusie — Public Edition v1.0</title>
+  <title>MIKE‑CORE‑F Training & Inclusie — Public Edition v1.5</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -41,9 +41,10 @@
     }
 
     .glass-panel {
-      background: radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
-                  rgba(5, 8, 20, 0.92);
+      background:
+        radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+        rgba(5, 8, 20, 0.92);
       border-radius: 24px;
       border: 1px solid rgba(58, 169, 255, 0.25);
       box-shadow: var(--shadow-soft);
@@ -90,7 +91,13 @@
     .hero-subtitle {
       font-size: 16px;
       color: var(--text-soft);
-      max-width: 640px;
+      max-width: 680px;
+    }
+
+    .hero-meta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
     }
 
     .section {
@@ -125,6 +132,102 @@
       margin-left: 18px;
     }
 
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(58, 169, 255, 0.12), transparent 60%),
+                  rgba(8, 12, 26, 0.96);
+      border-radius: 14px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      padding: 14px 14px 16px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(58, 169, 255, 0.35);
+      font-size: 11px;
+      color: var(--accent-silver);
+      background: rgba(5, 10, 24, 0.9);
+    }
+
+    .timeline {
+      margin-top: 10px;
+      border-left: 1px solid rgba(58, 169, 255, 0.4);
+      padding-left: 14px;
+    }
+
+    .timeline-step {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 8px rgba(58, 169, 255, 0.8);
+    }
+
+    .timeline-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+    }
+
+    .timeline-title {
+      font-size: 14px;
+      color: var(--accent-blue);
+    }
+
+    .cta-box {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px dashed rgba(58, 169, 255, 0.5);
+      background: rgba(5, 10, 24, 0.9);
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
     .footer-note {
       margin-top: 26px;
       font-size: 11px;
@@ -145,73 +248,300 @@
         </div>
         <h1 class="hero-title">Training & Inclusie</h1>
         <p class="hero-subtitle">
-          Een sociaal‑technisch ecosysteem dat stabiliteit bouwt voor jongeren, professionals en kwetsbare groepen.
+          Een sociaal‑technisch ecosysteem dat stabiliteit bouwt voor jongeren, professionals en kwetsbare groepen —
+          met een expliciete strijd tegen wegwerp‑cultuur in mensen, hardware en kennis.
         </p>
+        <div class="hero-meta">
+          Deze pagina beschrijft de publieke missie van MIKE‑CORE‑F: hoe training, inclusie en anti‑wegwerp‑denken samen één ecosysteem vormen.
+        </div>
       </header>
 
+      <!-- Waarom deze pagina bestaat -->
       <section class="section">
         <div class="section-title">Waarom deze pagina bestaat</div>
         <p>
           MIKE‑CORE‑F is meer dan een IT‑ecosysteem. Het is een structuur die mensen beschermt, stabiliteit creëert en kansen opent
-          voor iedereen — ongeacht diploma, achtergrond of startpositie.
+          voor iedereen — ongeacht diploma, achtergrond of startpositie. Deze pagina maakt zichtbaar hoe training, inclusie en
+          anti‑wegwerp‑cultuur samen een sociaal‑technische laag vormen bovenop de technische frameworks.
         </p>
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Focus</div>
+            <div class="card-title">Mensen eerst, systemen daarna</div>
+            <p>
+              Niet de tool, maar de mens staat centraal. MIKE‑CORE‑F gebruikt structuur om mensen te beschermen tegen chaos,
+              druk en onnodige faalervaringen.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Doel</div>
+            <div class="card-title">Stabiliteit als basisrecht</div>
+            <p>
+              Iedereen verdient een stabiele omgeving om in te leren, te werken en te groeien — ook wie uitvalt in klassieke systemen.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Methode</div>
+            <div class="card-title">Ecosystemisch denken</div>
+            <p>
+              Problemen worden niet geïsoleerd bekeken, maar in hun volledige context: mens, proces, hardware, kennis en omgeving.
+            </p>
+          </div>
+        </div>
       </section>
 
-      <section class="section">
-        <div class="section-title">1. Opleidingspaden voor jongeren zonder diploma</div>
-        <p>
-          Jongeren vallen vaak uit door abstracte theorie en gebrek aan structuur. MIKE‑CORE‑F biedt reproduceerbare stappen,
-          ecosystemische begeleiding en een veilige leeromgeving.
-        </p>
-        <ul>
-          <li>duidelijke diagnose‑structuren</li>
-          <li>stap‑voor‑stap stabiliteitsopbouw</li>
-          <li>ecosystemische begeleiding</li>
-          <li>groei zonder diploma‑drempels</li>
-        </ul>
-      </section>
-
-      <section class="section">
-        <div class="section-title">2. Voor professionals die vastlopen</div>
-        <p>
-          Een diploma garandeert geen stabiliteit. MIKE‑CORE‑F helpt professionals die ruis, druk of inconsistentie ervaren.
-        </p>
-        <ul>
-          <li>herstel van stabiliteit</li>
-          <li>drift‑herkenning</li>
-          <li>ecosystemische analyse</li>
-          <li>audit‑proof workflows</li>
-        </ul>
-      </section>
-
-      <section class="section">
-        <div class="section-title">3. Inclusie voor kwetsbare groepen</div>
-        <p>
-          MIKE‑CORE‑F beschermt mensen die door klassieke systemen worden afgeschreven. Stabiliteit is de basis waarop iedereen
-          kan groeien.
-        </p>
-        <ul>
-          <li>begeleiding zonder drempels</li>
-          <li>ecosystemische veiligheid</li>
-          <li>reproduceerbare stappen</li>
-          <li>groei voor iedereen</li>
-        </ul>
-      </section>
-
+      <!-- Wegwerp-cultuur -->
       <section class="section">
         <div class="section-title">Anti‑Wegwerp Cultuur</div>
         <p>
-          MIKE‑CORE‑F bestrijdt wegwerp‑cultuur op drie niveaus: mensen, hardware en kennis.
+          MIKE‑CORE‑F verzet zich tegen wegwerp‑denken op drie niveaus: mensen, hardware en kennis. Weggooien is altijd een symptoom
+          van een dieper systeemprobleem. Dit ecosysteem zoekt die oorzaak, maakt ze zichtbaar en bouwt een alternatief.
         </p>
-        <ul>
-          <li><strong>Mensen:</strong> niemand wordt afgeschreven door fouten of achtergrond.</li>
-          <li><strong>Hardware:</strong> diagnose, herstel en hergebruik.</li>
-          <li><strong>Kennis:</strong> niets verdwijnt — alles wordt reproduceerbaar.</li>
-        </ul>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Mens</div>
+            <div class="card-title">Niemand is “afgeschreven”</div>
+            <p>
+              Mensen worden niet gedefinieerd door fouten, diagnoses of diploma’s. Stabiliteit, structuur en begeleiding maken groei opnieuw mogelijk.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Hardware</div>
+            <div class="card-title">Herstel vóór vervanging</div>
+            <p>
+              Apparatuur wordt niet zomaar vervangen. Diagnose, herstel en hergebruik zijn standaard. Dit verlaagt kosten en beschermt het milieu.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Kennis</div>
+            <div class="card-title">Niets mag verloren gaan</div>
+            <p>
+              Ervaring, fouten en oplossingen worden vastgelegd in reproduceerbare structuren. Geen “tribale kennis”, maar een audit‑proof ecosysteem.
+            </p>
+          </div>
+        </div>
+
+        <div class="pill-row">
+          <div class="pill">Geen mens wegwerpbaar</div>
+          <div class="pill">Geen hardware wegwerpbaar</div>
+          <div class="pill">Geen kennis wegwerpbaar</div>
+          <div class="pill">Reproduceerbare stappen</div>
+          <div class="pill">Audit‑vast denken</div>
+        </div>
+      </section>
+
+      <!-- Jongeren zonder diploma -->
+      <section class="section">
+        <div class="section-title">1. Opleidingspaden voor jongeren zonder diploma</div>
+        <p>
+          Jongeren vallen vaak uit door abstracte theorie, onduidelijke verwachtingen en een gebrek aan structuur. MIKE‑CORE‑F biedt
+          reproduceerbare stappen, ecosystemische begeleiding en een veilige leeromgeving waarin fouten geen eindpunt zijn, maar
+          een signaal in het systeem.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Structuur</div>
+            <div class="card-title">Duidelijke diagnose‑structuren</div>
+            <p>
+              In plaats van “je kan het niet” krijgt de jongere een helder beeld: waar loopt het vast, welke stap ontbreekt, welke
+              context is nodig?
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Begeleiding</div>
+            <div class="card-title">Stap‑voor‑stap stabiliteitsopbouw</div>
+            <p>
+              Kleine, haalbare stappen bouwen vertrouwen op. Elke stap is reproduceerbaar en kan later opnieuw gebruikt worden.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Context</div>
+            <div class="card-title">Ecosystemische begeleiding</div>
+            <p>
+              Niet alleen de jongere wordt bekeken, maar ook de omgeving: thuis, school, werk, digitale toegang, hardware, steunnetwerk.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Toegang</div>
+            <div class="card-title">Groei zonder diploma‑drempels</div>
+            <p>
+              Talent wordt niet gemeten in papieren, maar in stabiliteit, inzet en leervermogen. MIKE‑CORE‑F opent alternatieve paden.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professionals -->
+      <section class="section">
+        <div class="section-title">2. Voor professionals die vastlopen</div>
+        <p>
+          Een diploma garandeert geen stabiliteit. Veel professionals botsen op ruis, druk, tegenstrijdige verwachtingen en systemen
+          die niet ontworpen zijn om hen te beschermen. MIKE‑CORE‑F biedt een ecosystemische bril om opnieuw grip te krijgen.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Herstel</div>
+            <div class="card-title">Herstel van stabiliteit</div>
+            <p>
+              Door processen, verantwoordelijkheden en verwachtingen te hertekenen, ontstaat opnieuw ruimte om gezond te werken.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Bewustzijn</div>
+            <div class="card-title">Drift‑herkenning</div>
+            <p>
+              Professionals leren herkennen wanneer systemen afwijken van hun bedoeling: te veel druk, te weinig structuur, te veel ruis.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Analyse</div>
+            <div class="card-title">Ecosystemische analyse</div>
+            <p>
+              Problemen worden niet op individuen geplakt, maar in kaart gebracht als systeemfouten. Dat maakt oplossingen eerlijker en duurzamer.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Werkvorm</div>
+            <div class="card-title">Audit‑proof workflows</div>
+            <p>
+              Werkprocessen worden zo ontworpen dat ze reproduceerbaar, uitlegbaar en verdedigbaar zijn — ook onder druk.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kwetsbare groepen -->
+      <section class="section">
+        <div class="section-title">3. Inclusie voor kwetsbare groepen</div>
+        <p>
+          MIKE‑CORE‑F beschermt mensen die door klassieke systemen worden afgeschreven: mensen met een diagnose, een gat in hun CV,
+          financiële problemen, taalbarrières of een geschiedenis van “falen”. Stabiliteit is de basis waarop iedereen kan groeien.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Toegang</div>
+            <div class="card-title">Begeleiding zonder drempels</div>
+            <p>
+              Geen voorwaarde van perfecte achtergrond. De vraag is: wat is er nodig om stabiliteit te bouwen, hier en nu?
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Veiligheid</div>
+            <div class="card-title">Ecosystemische veiligheid</div>
+            <p>
+              Mensen worden niet alleen “geholpen”, maar beschermd tegen systemen die hen opnieuw zouden breken.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Herhaalbaarheid</div>
+            <div class="card-title">Reproduceerbare stappen</div>
+            <p>
+              Wat werkt, wordt vastgelegd. Zodat het opnieuw kan werken — voor dezelfde persoon of voor iemand anders.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Groei</div>
+            <div class="card-title">Groei voor iedereen</div>
+            <p>
+              Inclusie betekent niet “erbij mogen zijn”, maar kunnen groeien op een manier die past bij de persoon én het ecosysteem.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mogelijke formats / mogelijkheden -->
+      <section class="section">
+        <div class="section-title">Mogelijke formats & samenwerkingen</div>
+        <p>
+          MIKE‑CORE‑F Training & Inclusie is geen klassiek opleidingscatalogus. Het is een ecosysteem dat in verschillende vormen
+          kan samenwerken met scholen, organisaties, bedrijven en lokale initiatieven.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Introductie</div>
+            <div class="card-title">Awareness‑sessies</div>
+            <p>
+              Korte sessies over wegwerp‑cultuur, ecosystemisch denken en stabiliteit — voor jongeren, teams of organisaties.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Training</div>
+            <div class="card-title">Praktische trajecten</div>
+            <p>
+              Hands‑on trajecten rond hardware‑hergebruik, digitale basisvaardigheden, ecosystemisch denken en stabiliteit in IT‑omgevingen.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Projecten</div>
+            <div class="card-title">Inclusie‑ en anti‑waste projecten</div>
+            <p>
+              Samenwerkingen met scholen, sociale organisaties of lokale initiatieven rond hardware‑redding, opleiding en begeleiding.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Pilots</div>
+            <div class="card-title">Kleine ecosystemische proeven</div>
+            <p>
+              Beperkte pilots om MIKE‑CORE‑F in een echte context te testen: een klas, een team, een organisatie of een wijk.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          Organisaties, scholen of initiatieven die willen verkennen wat mogelijk is, kunnen via de publieke contactkanalen
+          een verkennend gesprek aanvragen. Elke samenwerking vertrekt vanuit stabiliteit, reproduceerbaarheid en respect
+          voor kwetsbare groepen.
+        </div>
+      </section>
+
+      <!-- Roadmap -->
+      <section class="section">
+        <div class="section-title">Ecosystemische roadmap</div>
+        <p>
+          Training & Inclusie binnen MIKE‑CORE‑F volgt geen lineair traject, maar een reproduceerbare cyclus. Elke stap kan klein
+          beginnen en later opgeschaald worden.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-label">Stap 1 — Awareness</div>
+            <div class="timeline-title">Wegwerp‑cultuur zichtbaar maken</div>
+            <p>
+              Mensen, hardware en kennis worden niet langer als verbruiksmateriaal gezien, maar als ecosystemische elementen.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Stap 2 — Training</div>
+            <div class="timeline-title">Structuur en taal aanreiken</div>
+            <p>
+              De basisconcepten van stabiliteit, drift, ecosystemisch denken en reproduceerbaarheid worden aangeleerd.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Stap 3 — Inclusieproject</div>
+            <div class="timeline-title">Concrete toepassing</div>
+            <p>
+              Een klein, haalbaar project waarin jongeren, professionals of kwetsbare groepen actief betrokken worden.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Stap 4 — Ecosystemische groei</div>
+            <div class="timeline-title">Opschalen wat werkt</div>
+            <p>
+              Wat werkt, wordt vastgelegd, herhaald en uitgebreid naar andere contexten — zonder de kern te verliezen.
+            </p>
+          </div>
+        </div>
       </section>
 
       <div class="footer-note">
-        © 2026 MIKE‑CORE‑F Ecosystem — Public Layer v1.0
+        © 2026 MIKE‑CORE‑F Ecosystem — Public Layer v1.5  
+        <br>Deze pagina beschrijft alleen de publieke laag. Kernstructuren, blauwdrukken en interne validatieketens blijven beschermd.
       </div>
 
     </div>
