@@ -12,12 +12,16 @@
     color: #e5ecf7;
     font-family: system-ui, sans-serif;
     overflow-x: hidden;
+    position: relative; /* toegevoegd zodat #particles zich aan body kan hechten */
   }
 
   #particles {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
     z-index: 0;
     pointer-events: none;
   }
@@ -216,7 +220,6 @@ setInterval(() => {
   <h1>MIKE‑CORE • Public Knowledge Base</h1>
 </div>
 
-<!-- GRID -->
 <div class="grid">
   <div class="category" onclick="openModal('ecosystem')"><h2>Ecosysteem</h2></div>
   <div class="category" onclick="openModal('aiews')"><h2>AIEWS</h2></div>
@@ -227,6 +230,7 @@ setInterval(() => {
   <div class="category" onclick="openModal('about')"><h2>About</h2></div>
   <div class="category" onclick="openModal('contact')"><h2>Contact</h2></div>
 </div>
+
 <!-- ECOSYSTEEM -->
 <div class="modal" id="ecosystem">
   <div class="modal-content">
@@ -289,7 +293,6 @@ setInterval(() => {
     <div class="close" onclick="closeModal('aiews')">Sluiten</div>
   </div>
 </div>
-
 <!-- VISUAL MAPS -->
 <div class="modal" id="visuals">
   <div class="modal-content">
@@ -328,11 +331,14 @@ setInterval(() => {
     <a href="MIKE-CORE_Public_License_Overview_v1.0_DUTCH.html">License Overview (NL)</a>
     <a href="MIKE-CORE_Public_License_Overview_v1.0_EN.html">License Overview (EN)</a>
 
+    <!-- NIEUWE MODULE: VEILIG TOEGEVOEGD -->
+    <a href="05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/">MIKE‑CORE Licensing Center</a>
+
     <div class="close" onclick="closeModal('licenses')">Sluiten</div>
   </div>
 </div>
 
-<!-- TRAINING & INCLUSIE -->
+<!-- TRAINING -->
 <div class="modal" id="training">
   <div class="modal-content">
     <h3>Training & Inclusie</h3>
@@ -389,19 +395,38 @@ setInterval(() => {
   </div>
 </div>
 
-<!-- ECOSYSTEM CORE FOOTER -->
 <div class="core-footer">
   <div class="core-line1">Ecosystem Core</div>
   <div class="core-line2">This is the architect of a new IT ecosystem.</div>
   <div class="core-line3">This is the core where logic begins.</div>
 </div>
 
-<!-- COPYRIGHT FOOTER -->
 <div class="copyright-footer">
   © 2026 MIKE‑CORE™ IT‑Constitutional Ecosystem  
   <br>All Rights Reserved — Reproduceerbaar, audit‑vast en juridisch beschermd.  
   <br>Unauthorized copying, distribution or modification is strictly prohibited.
 </div>
+
+<script>
+function openModal(id) { document.getElementById(id).style.display = "block"; }
+function closeModal(id) { document.getElementById(id).style.display = "none"; }
+
+const monitorMessages = [
+  "Ecosystem Status: Stable",
+  "Drift: Low",
+  "Audit Integrity: OK",
+  "Signal Noise: Minimal",
+  "Core Sync: Active",
+  "Subsystems: Nominal",
+  "Predictive Flow: Balanced",
+  "Reproducibility: Verified"
+];
+
+setInterval(() => {
+  document.getElementById("monitorText").textContent =
+    monitorMessages[Math.floor(Math.random() * monitorMessages.length)];
+}, 2500);
+</script>
 
 </body>
 </html>
