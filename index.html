@@ -6,26 +6,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+  /* --- GLOBAL LAYOUT FIXES --- */
+  html, body {
+    height: 100%;
+  }
+
   body {
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(180deg, #03050d 0%, #0a1224 100%);
     color: #e5ecf7;
     font-family: system-ui, sans-serif;
     overflow-x: hidden;
-    position: relative; /* toegevoegd zodat #particles zich aan body kan hechten */
+    position: relative;
   }
 
+  /* --- PARTICLES FIX (ALTIJD VOLLEDIGE HOOGTE) --- */
   #particles {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
-    min-height: 100%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
   }
 
+  /* --- MONITOR BAR --- */
   .monitor {
     width: 100%;
     text-align: center;
@@ -42,6 +51,7 @@
     text-shadow: 0 0 8px rgba(58,169,255,0.6);
   }
 
+  /* --- HEADER --- */
   .header {
     text-align: center;
     padding: 40px 20px;
@@ -61,13 +71,14 @@
     text-shadow: 0 0 12px rgba(58,169,255,0.5);
   }
 
+  /* --- GRID FIX (PERFECT OP 3440×1440) --- */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 25px;
     padding: 20px 40px;
-    max-width: 1200px;
-    margin: auto;
+    max-width: 1600px;     /* voorkomt uitrekken op ultrawide */
+    margin: 0 auto;        /* centreert de grid */
     position: relative;
     z-index: 2;
   }
@@ -95,6 +106,7 @@
     margin: 0;
   }
 
+  /* --- MODALS --- */
   .modal {
     display: none;
     position: fixed;
@@ -111,7 +123,7 @@
     border: 1px solid rgba(58,169,255,0.3);
     border-radius: 14px;
     width: 90%;
-    max-width: 600px;
+    max-width: 700px;   /* betere schaal op ultrawide */
     margin: auto;
     padding: 25px;
     box-shadow: 0 0 20px rgba(58,169,255,0.3);
@@ -148,10 +160,11 @@
     color: #ff8a8a;
   }
 
+  /* --- FOOTER --- */
   .core-footer {
     text-align: center;
     padding: 40px 20px 20px 20px;
-    margin-top: 60px;
+    margin-top: auto;   /* duwt footer naar onder */
     position: relative;
     z-index: 2;
     color: #7fc7ff;
@@ -230,7 +243,6 @@ setInterval(() => {
   <div class="category" onclick="openModal('about')"><h2>About</h2></div>
   <div class="category" onclick="openModal('contact')"><h2>Contact</h2></div>
 </div>
-
 <!-- ECOSYSTEEM -->
 <div class="modal" id="ecosystem">
   <div class="modal-content">
@@ -293,6 +305,7 @@ setInterval(() => {
     <div class="close" onclick="closeModal('aiews')">Sluiten</div>
   </div>
 </div>
+
 <!-- VISUAL MAPS -->
 <div class="modal" id="visuals">
   <div class="modal-content">
@@ -331,7 +344,6 @@ setInterval(() => {
     <a href="MIKE-CORE_Public_License_Overview_v1.0_DUTCH.html">License Overview (NL)</a>
     <a href="MIKE-CORE_Public_License_Overview_v1.0_EN.html">License Overview (EN)</a>
 
-    <!-- NIEUWE MODULE: VEILIG TOEGEVOEGD -->
     <a href="05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/">MIKE‑CORE Licensing Center</a>
 
     <div class="close" onclick="closeModal('licenses')">Sluiten</div>
@@ -395,6 +407,7 @@ setInterval(() => {
   </div>
 </div>
 
+<!-- FOOTER -->
 <div class="core-footer">
   <div class="core-line1">Ecosystem Core</div>
   <div class="core-line2">This is the architect of a new IT ecosystem.</div>
@@ -406,27 +419,6 @@ setInterval(() => {
   <br>All Rights Reserved — Reproduceerbaar, audit‑vast en juridisch beschermd.  
   <br>Unauthorized copying, distribution or modification is strictly prohibited.
 </div>
-
-<script>
-function openModal(id) { document.getElementById(id).style.display = "block"; }
-function closeModal(id) { document.getElementById(id).style.display = "none"; }
-
-const monitorMessages = [
-  "Ecosystem Status: Stable",
-  "Drift: Low",
-  "Audit Integrity: OK",
-  "Signal Noise: Minimal",
-  "Core Sync: Active",
-  "Subsystems: Nominal",
-  "Predictive Flow: Balanced",
-  "Reproducibility: Verified"
-];
-
-setInterval(() => {
-  document.getElementById("monitorText").textContent =
-    monitorMessages[Math.floor(Math.random() * monitorMessages.length)];
-}, 2500);
-</script>
 
 </body>
 </html>
