@@ -6,35 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-  /* --- GLOBAL LAYOUT FIXES --- */
-  html, body {
-    height: 100%;
-  }
-
   body {
     margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     background: linear-gradient(180deg, #03050d 0%, #0a1224 100%);
     color: #e5ecf7;
     font-family: system-ui, sans-serif;
     overflow-x: hidden;
-    position: relative;
   }
 
-  /* --- PARTICLES FIX (ALTIJD VOLLEDIGE HOOGTE) --- */
   #particles {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: 0;
     pointer-events: none;
   }
 
-  /* --- MONITOR BAR --- */
   .monitor {
     width: 100%;
     text-align: center;
@@ -51,7 +38,6 @@
     text-shadow: 0 0 8px rgba(58,169,255,0.6);
   }
 
-  /* --- HEADER --- */
   .header {
     text-align: center;
     padding: 40px 20px;
@@ -71,14 +57,13 @@
     text-shadow: 0 0 12px rgba(58,169,255,0.5);
   }
 
-  /* --- GRID FIX (PERFECT OP 3440×1440) --- */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 25px;
     padding: 20px 40px;
-    max-width: 1600px;     /* voorkomt uitrekken op ultrawide */
-    margin: 0 auto;        /* centreert de grid */
+    max-width: 1200px;
+    margin: auto;
     position: relative;
     z-index: 2;
   }
@@ -106,7 +91,6 @@
     margin: 0;
   }
 
-  /* --- MODALS --- */
   .modal {
     display: none;
     position: fixed;
@@ -123,7 +107,7 @@
     border: 1px solid rgba(58,169,255,0.3);
     border-radius: 14px;
     width: 90%;
-    max-width: 700px;   /* betere schaal op ultrawide */
+    max-width: 600px;
     margin: auto;
     padding: 25px;
     box-shadow: 0 0 20px rgba(58,169,255,0.3);
@@ -160,11 +144,10 @@
     color: #ff8a8a;
   }
 
-  /* --- FOOTER --- */
   .core-footer {
     text-align: center;
     padding: 40px 20px 20px 20px;
-    margin-top: auto;   /* duwt footer naar onder */
+    margin-top: 60px;
     position: relative;
     z-index: 2;
     color: #7fc7ff;
@@ -233,6 +216,7 @@ setInterval(() => {
   <h1>MIKE‑CORE • Public Knowledge Base</h1>
 </div>
 
+<!-- GRID -->
 <div class="grid">
   <div class="category" onclick="openModal('ecosystem')"><h2>Ecosysteem</h2></div>
   <div class="category" onclick="openModal('aiews')"><h2>AIEWS</h2></div>
@@ -243,6 +227,7 @@ setInterval(() => {
   <div class="category" onclick="openModal('about')"><h2>About</h2></div>
   <div class="category" onclick="openModal('contact')"><h2>Contact</h2></div>
 </div>
+
 <!-- ECOSYSTEEM -->
 <div class="modal" id="ecosystem">
   <div class="modal-content">
@@ -344,40 +329,17 @@ setInterval(() => {
     <a href="MIKE-CORE_Public_License_Overview_v1.0_DUTCH.html">License Overview (NL)</a>
     <a href="MIKE-CORE_Public_License_Overview_v1.0_EN.html">License Overview (EN)</a>
 
-    <a href="05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/">MIKE‑CORE Licensing Center</a>
-
     <div class="close" onclick="closeModal('licenses')">Sluiten</div>
   </div>
 </div>
 
-<!-- TRAINING -->
+<!-- TRAINING & INCLUSIE -->
 <div class="modal" id="training">
   <div class="modal-content">
     <h3>Training & Inclusie</h3>
 
     <a href="MIKE-CORE_Training_Inclusie_v1.0_DUTCH.html">Training & Inclusie (NL)</a>
     <a href="MIKE‑CORE‑F Training & Inclusion_EN.html">Training & Inclusion (EN)</a>
-
-    <a href="MIKE‑CORE_Fundamentals_v1.0_DUTCH.html">Fundamentals (NL)</a>
-    <a href="MIKE-CORE_Fundamentals_v1.0_EN.html">Fundamentals (EN)</a>
-
-    <a href="MIKE‑CORE_Training_Methodology_v1.0_DUTCH.html">Training Methodology (NL)</a>
-    <a href="MIKE‑CORE_Training_Methodology_v1.0_EN.html">Training Methodology (EN)</a>
-
-    <a href="MIKE‑CORE_Inclusion_Framework_v1.0_DUTCH.html">Inclusion Framework (NL)</a>
-    <a href="MIKE‑CORE_Inclusion_Framework_v1.0_EN.html">Inclusion Framework (EN)</a>
-
-    <a href="MIKE‑CORE_Practical_Training_Examples_v1.0_DUTCH.html">Practical Training Examples (NL)</a>
-    <a href="MIKE‑CORE_Practical_Training_Examples_v1.0_EN.html">Practical Training Examples (EN)</a>
-
-    <a href="MIKE‑CORE_Community_Impact_v1.0_DUTCH.html">Community Impact (NL)</a>
-    <a href="MIKE‑CORE_Community_Impact_v1.0_EN.html">Community Impact (EN)</a>
-
-    <a href="MIKE‑CORE_Future_Opportunities_v1.0_DUTCH.html">Future Opportunities (NL)</a>
-    <a href="MIKE‑CORE_Future_Opportunities_v1.0_EN.html">Future Opportunities (EN)</a>
-
-    <a href="MIKE‑CORE_Training_FAQ_v1.0_DUTCH.html">Training FAQ (NL)</a>
-    <a href="MIKE‑CORE_Training_FAQ_v1.0_EN.html">Training FAQ (EN)</a>
 
     <div class="close" onclick="closeModal('training')">Sluiten</div>
   </div>
@@ -407,13 +369,14 @@ setInterval(() => {
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ECOSYSTEM CORE FOOTER -->
 <div class="core-footer">
   <div class="core-line1">Ecosystem Core</div>
   <div class="core-line2">This is the architect of a new IT ecosystem.</div>
   <div class="core-line3">This is the core where logic begins.</div>
 </div>
 
+<!-- COPYRIGHT FOOTER -->
 <div class="copyright-footer">
   © 2026 MIKE‑CORE™ IT‑Constitutional Ecosystem  
   <br>All Rights Reserved — Reproduceerbaar, audit‑vast en juridisch beschermd.  
